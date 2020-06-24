@@ -7,11 +7,11 @@ export async function getByName(name) {
 // Pega a lista completa do nome de todas as categorias
 export async function getCategorieList() {
   const categorie = await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list').then((r) => r.json());
-  return categorie.drinks;
+  return categorie.drinks.map(({ strCategory }) => strCategory);
 }
 
 // Pega todos os drinks de uma categoria específica
-export async function filterByCategorie(categorie) {
-  const categorieReturn = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${categorie}`).then((r) => r.json());
-  return categorieReturn.drinks;
+export async function filterByCategory(category) {
+  const categoryReturn = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${categorie}`).then((r) => r.json());
+  return categoryReturn.drinks;
 }
