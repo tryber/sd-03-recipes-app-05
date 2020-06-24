@@ -6,14 +6,14 @@ export async function getByName(name) {
 
 // Pega a lista completa e detalhada de todas as categorias
 export async function getAllCategories() {
-  const categorie = await fetch('https://www.themealdb.com/api/json/v1/1/categories.php').then((r) => r.json);
+  const categorie = await fetch('https://www.themealdb.com/api/json/v1/1/categories.php').then((r) => r.json());
   return categorie;
 }
 
 // Pega a lista completa do nome de todas as categorias
 export async function getCategorieList() {
-  const categorie = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list').then((r) => r.json);
-  return categorie;
+  const categorie = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list').then((r) => r.json());
+  return categorie.meals;
 }
 
 // Pega todas as refeições de uma categoria específica
