@@ -5,13 +5,13 @@ export async function getByName(name) {
 }
 
 // Pega a lista completa do nome de todas as categorias
-export async function getCategorieList() {
-  const categorie = await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list').then((r) => r.json());
-  return categorie.drinks.map(({ strCategory }) => strCategory);
+export async function getCategoryList() {
+  const category = await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list').then((r) => r.json());
+  return category.drinks.map(({ strCategory }) => strCategory);
 }
 
 // Pega todos os drinks de uma categoria específica
 export async function filterByCategory(category) {
-  const categoryReturn = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${categorie}`).then((r) => r.json());
+  const categoryReturn = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`).then((r) => r.json());
   return categoryReturn.drinks;
 }
