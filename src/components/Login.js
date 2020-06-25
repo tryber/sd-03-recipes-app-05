@@ -32,7 +32,7 @@ const renderText = (text) => {
   return false;
 };
 
-const renderInputs = (email, password, handleChangeEmail, handleChangePassword) => (
+function renderInputs(email, password, handleChangeEmail, handleChangePassword) {
     <div>
       <input
         type="email"
@@ -51,7 +51,7 @@ const renderInputs = (email, password, handleChangeEmail, handleChangePassword) 
         placeholder="Senha"
       />
     </div>
-);
+}
 
 function renderLoginButton(displayButton, email) {
   return (displayButton) ? (
