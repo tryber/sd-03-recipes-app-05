@@ -43,4 +43,5 @@ Card.propTypes = {
   index: PropTypes.number.isRequired,
   meal: PropTypes.string.isRequired,
   thumb: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };

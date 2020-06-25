@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
+import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import { TelaPrincipalContext } from '../contexts/TelaPrincipalContext';
@@ -33,3 +34,7 @@ export default function Categoryfilter({ category = 'All' }) {
     </div>
   );
 }
+
+Categoryfilter.propTypes = {
+  category: PropTypes.string.isRequired,
+};

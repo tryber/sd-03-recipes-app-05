@@ -1,8 +1,8 @@
 import React from 'react';
-import './App.css';
 import { Route } from 'react-router-dom';
 import Telaprincipal from './pages/TelaPrincipal';
 import TPProvider from './contexts/TelaPrincipalContext';
+import './App.css';
 
 function App() {
   return (
