@@ -1,6 +1,6 @@
 body {
   align-items: center;
-  background: rgb(47, 8, 8);
+  background: rgb(64, 3, 70);
   display: flex;
   justify-content: center;
 }
@@ -9,26 +9,21 @@ body {
   align-items: center;
   background: #ff5518;
   border-radius: 2%;
-  box-shadow: 0 0 6px rgba(228, 126, 10, 0.541);
+  box-shadow: 0 3px 3px 0 black;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 15%;
+  margin-top: 5%;
   min-height: 300px;
   padding: 40px;
   width: 340px;
 }
 
-h2 {
-  color: white;
-  font-size: 26px;
-  font-weight: 600;
-  margin: 0 0 40px;
-}
-
 .input-login {
+  background-color: #f0c894;
   border: 0;
   box-sizing: border-box;
+  border-radius: 5px;
   display: block;
   font-size: 14px;
   margin: 0 0 20px;
@@ -39,11 +34,12 @@ h2 {
 .button-login {
   background: #8f2a06;
   border: 0;
+  border-radius: 5px;
   color: white;
   cursor: pointer;
   font-size: 15px;
   font-weight: 400;
-  margin-top: 10px;
+  margin-top: 35px;
   padding: 12px 15px;
   width: 340px;
 }
@@ -55,17 +51,24 @@ h2 {
 .button-disabled {
   background: #692b15;
   border: 0;
+  border-radius: 5px;
   color: white;
   font-size: 15px;
   font-weight: 400;
-  margin-top: 10px;
+  margin-top: 35px;
   padding: 12px 15px;
   width: 340px;
 }
 
 .text-invalid {
-  color: rgb(245, 212, 212);
+  color: rgb(15, 73, 28);
   font-size: 14px;
   margin-bottom: -5px;
   margin-left: 170px;
+}
+
+.img-logo {
+  height: 130px;
+  margin-bottom: 50px;
+  width: 200px;
 }

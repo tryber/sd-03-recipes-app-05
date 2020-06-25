@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../images/logo.png';
 import '../style/Login.css';
 
 const verifyEmail = (email) => {
@@ -111,7 +112,7 @@ const Login = () => {
 
   return (
     <form className="loginbox">
-      <h2>APP RECEITAS</h2>
+      <img src={logo} className="img-logo" alt="Logo App Receitas" />
       {renderInputs(email, password, handleChangeEmail, handleChangePassword)}
       {renderLoginButton(displayButton, email)}
       {renderText(displayText)}
