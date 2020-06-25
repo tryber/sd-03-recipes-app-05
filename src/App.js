@@ -8,8 +8,6 @@ function App() {
     <div id="meals">
       <span>TRYBE</span>
       <PerfilScreen />
-
-      <Footer />
     </div>
   );
 }
