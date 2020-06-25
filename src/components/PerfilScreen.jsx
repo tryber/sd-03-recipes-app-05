@@ -14,7 +14,7 @@ export default function PerfilScreen() {
       <Link to="/receitas-feitas">Receitas Feitas</Link>
       <Link to="/receitas-favoritas">Receitas Favoritas</Link>
       <Link to="/" onClick={() => clearStorage()}>Sair</Link>
-      
+
       <Footer />
     </div>
   );
