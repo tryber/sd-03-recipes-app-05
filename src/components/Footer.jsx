@@ -4,7 +4,7 @@ import foodIcon from '../images/mealIcon.svg';
 import drinkIcon from '../images/drinkIcon.svg';
 import exploreIcon from '../images/exploreIcon.svg';
 
-const Footer = () => {
+function Footer() {
   return (
     <footer>
       <Link to="/comidas">
@@ -20,6 +20,6 @@ const Footer = () => {
       </Link>
     </footer>
   );
-};
+}
 
 export default Footer;
