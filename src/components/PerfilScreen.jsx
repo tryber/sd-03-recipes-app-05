@@ -9,6 +9,7 @@ function clearStorage() {
 export default function PerfilScreen() {
   return (
     <div>
+      <h3>Perfil</h3>
       <p>email@email.com</p>
       <Link to="/receitas-feitas">Receitas Feitas</Link>
       <Link to="/receitas-favoritas">Receitas Favoritas</Link>
