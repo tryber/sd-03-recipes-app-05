@@ -32,26 +32,26 @@ const renderText = (text) => {
   return false;
 };
 
-function renderInputs(email, password, handleChangeEmail, handleChangePassword) {
-    <div>
-      <input
-        type="email"
-        value={email}
-        data-testid="email-input"
-        className="input-login"
-        onChange={(event) => handleChangeEmail(event)}
-        placeholder="E-mail"
-      />
-      <input
-        data-testid="password-input"
-        className="input-login"
-        type="password"
-        value={password}
-        onChange={(event) => handleChangePassword(event)}
-        placeholder="Senha"
-      />
-    </div>
-}
+const renderInputs = (email, password, handleChangeEmail, handleChangePassword) => (
+  <div>
+    <input
+      type="email"
+      value={email}
+      data-testid="email-input"
+      className="input-login"
+      onChange={(event) => handleChangeEmail(event)}
+      placeholder="E-mail"
+    />
+    <input
+      data-testid="password-input"
+      className="input-login"
+      type="password"
+      value={password}
+      onChange={(event) => handleChangePassword(event)}
+      placeholder="Senha"
+    />
+  </div>
+);
 
 function renderLoginButton(displayButton, email) {
   return (displayButton) ? (
