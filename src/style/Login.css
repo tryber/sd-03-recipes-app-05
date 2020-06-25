@@ -20,7 +20,7 @@ body {
 }
 
 h2 {
-  color: #ffffff;
+  color: white;
   font-size: 26px;
   font-weight: 600;
   margin: 0 0 40px;
@@ -37,7 +37,7 @@ h2 {
 }
 
 .button-login {
-  background: #8F2A06;
+  background: #8f2a06;
   border: 0;
   color: white;
   cursor: pointer;
@@ -49,7 +49,7 @@ h2 {
 }
 
 .button-login:hover {
-  background-color: #561E0A;
+  background-color: #561e0a;
 }
 
 .button-disabled {

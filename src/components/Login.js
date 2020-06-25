@@ -24,10 +24,12 @@ const saveTokens = () => {
 const saveEmail = (email) => localStorage.setItem('user', JSON.stringify({ email }));
 
 const renderText = (text) => {
-  if(text) {
+  if (text) {
     return (
       <p className="text-invalid">* E-mail ou senha inválido</p>
     );
+  } else {
+    return false;
   }
 };
 
@@ -52,7 +54,7 @@ const renderInputs = (email, password, handleChangeEmail, handleChangePassword) 
       />
     </div>
   );
-}
+};
 
 const renderLoginButton = (displayButton, email) => {
   return (displayButton) ? (
@@ -77,10 +79,9 @@ const renderLoginButton = (displayButton, email) => {
       LOGIN
     </button>
   );
-}
+};
 
 const Login = () => {
-
   const [state, setState] = useState({
     email: '',
     password: '',
