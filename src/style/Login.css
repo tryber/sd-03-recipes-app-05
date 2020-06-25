@@ -20,10 +20,10 @@ body {
 }
 
 .input-login {
-  background-color: #f0c894;
+  background-color: #f3dbbb;
   border: 0;
-  box-sizing: border-box;
   border-radius: 5px;
+  box-sizing: border-box;
   display: block;
   font-size: 14px;
   margin: 0 0 20px;
