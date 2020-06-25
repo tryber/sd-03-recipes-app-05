@@ -1,6 +1,6 @@
 import React from 'react';
-import Footer from './Footer';
 import { Link } from 'react-router-dom';
+import Footer from './Footer';
 
 function clearStorage() {
   localStorage.clear();
