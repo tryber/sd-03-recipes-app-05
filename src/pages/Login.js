@@ -64,6 +64,7 @@ function renderLoginButton(displayButton, email) {
         }}
         type="button"
         className="button-login"
+        data-testid="login-submit-btn"
       >
         LOGIN
       </button>
@@ -71,6 +72,7 @@ function renderLoginButton(displayButton, email) {
   ) : (
     <button
       disabled
+      data-testid="login-submit-btn"
       className="button-disabled"
       type="button"
     >
