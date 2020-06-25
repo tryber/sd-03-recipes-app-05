@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import foodIcon from '../images/mealIcon.svg';
+import mealIcon from '../images/mealIcon.svg';
 import drinkIcon from '../images/drinkIcon.svg';
 import exploreIcon from '../images/exploreIcon.svg';
 
@@ -8,7 +8,7 @@ function Footer() {
   return (
     <footer>
       <Link to="/comidas">
-        <img src={foodIcon} alt="food icon" />
+        <img src={mealIcon} alt="food icon" />
       </Link>
 
       <Link to="/explorar">
