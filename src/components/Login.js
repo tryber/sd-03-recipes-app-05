@@ -23,6 +23,62 @@ const saveTokens = () => {
 
 const saveEmail = (email) => localStorage.setItem('user', JSON.stringify({ email }));
 
+const renderText = (text) => {
+  if(text) {
+    return (
+      <p className="text-invalid">* E-mail ou senha inválido</p>
+    );
+  }
+};
+
+const renderInputs = (email, password, handleChangeEmail, handleChangePassword) => {
+  return (
+    <div>
+      <input
+        type="email"
+        value={email}
+        data-testid="email-input"
+        className="input-login"
+        onChange={(event) => handleChangeEmail(event)}
+        placeholder="E-mail"
+      />
+      <input
+        data-testid="password-input"
+        className="input-login"
+        type="password"
+        value={password}
+        onChange={(event) => handleChangePassword(event)}
+        placeholder="Senha"
+      />
+    </div>
+  );
+}
+
+const renderLoginButton = (displayButton, email) => {
+  return (displayButton) ? (
+    <Link data-testid="btn-play" to="/comidas" className="link-play">
+      <button
+        onClick={() => {
+          saveTokens();
+          saveEmail(email);
+        }}
+        type="button"
+        className="button-login"
+      >
+        LOGIN
+      </button>
+    </Link>
+  ) : (
+    <button
+      disabled
+      className="button-disabled"
+      type="button"
+    >
+      LOGIN
+    </button>
+  );
+}
+
 const Login = () => {
 
   const [state, setState] = useState({
@@ -46,76 +102,20 @@ const Login = () => {
       ...state,
       email: event.target.value,
     });
-  }
+  };
 
   const handleChangePassword = (event) => {
     setState({
       ...state,
       password: event.target.value,
     });
-  }
-
-  const renderInputs = (email, password) => {
-    return (
-      <div>
-        <input
-          type="email"
-          value={email}
-          data-testid="email-input"
-          className="input-login"
-          onChange={(event) => handleChangeEmail(event)}
-          placeholder="E-mail"
-        />
-        <input
-          data-testid="password-input"
-          className="input-login"
-          type="password"
-          value={password}
-          onChange={(event) => handleChangePassword(event)}
-          placeholder="Senha"
-        />
-      </div>
-    );
-  }
-
-  const renderText = (text) => {
-    if(text) {
-      return (
-        <p className="text-invalid">* E-mail ou senha inválido</p>
-      );
-    }
-}
-
-  const renderLoginButton = (displayButton) => {
-    return (displayButton) ? (
-      <Link data-testid="btn-play" to="/comidas" className="link-play">
-        <button
-          onClick={() => {
-            saveTokens();
-            saveEmail(email);
-          }}
-          type="button"
-          className="button-login"
-        >
-          LOGIN
-        </button>
-      </Link>
-    ) : (
-      <button
-        disabled
-        className="button-disabled"
-        type="button"
-      >
-        LOGIN
-      </button>
-    );
-  }
+  };
 
   return (
     <form className="loginbox">
       <h2>APP RECEITAS</h2>
-      {renderInputs(email, password)}
-      {renderLoginButton(displayButton)}
+      {renderInputs(email, password, handleChangeEmail, handleChangePassword)}
+      {renderLoginButton(displayButton, email)}
       {renderText(displayText)}
     </form>
   );
