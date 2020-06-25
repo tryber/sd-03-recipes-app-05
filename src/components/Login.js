@@ -28,13 +28,11 @@ const renderText = (text) => {
     return (
       <p className="text-invalid">* E-mail ou senha inválido</p>
     );
-  } else {
-    return false;
   }
+  return false;
 };
 
-const renderInputs = (email, password, handleChangeEmail, handleChangePassword) => {
-  return (
+const renderInputs = (email, password, handleChangeEmail, handleChangePassword) => (
     <div>
       <input
         type="email"
@@ -53,10 +51,9 @@ const renderInputs = (email, password, handleChangeEmail, handleChangePassword) 
         placeholder="Senha"
       />
     </div>
-  );
-};
+);
 
-const renderLoginButton = (displayButton, email) => {
+function renderLoginButton(displayButton, email) {
   return (displayButton) ? (
     <Link data-testid="btn-play" to="/comidas" className="link-play">
       <button
@@ -79,7 +76,7 @@ const renderLoginButton = (displayButton, email) => {
       LOGIN
     </button>
   );
-};
+}
 
 const Login = () => {
   const [state, setState] = useState({
