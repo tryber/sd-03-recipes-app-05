@@ -15,3 +15,13 @@ export async function filterByCategory(category) {
   const categoryReturn = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`).then((r) => r.json());
   return categoryReturn.drinks;
 }
+
+export async function getById(id) {
+  return (await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`)
+    .then((r) => r.json())).drinks[0];
+}
+
+export async function getRandom() {
+  return (await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
+    .then((r) => r.json())).drinks[0];
+}
