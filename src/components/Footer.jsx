@@ -6,16 +6,16 @@ import exploreIcon from '../images/exploreIcon.svg';
 
 function Footer() {
   return (
-    <footer>
-      <Link to="/comidas">
+    <footer data-testid="footer">
+      <Link to="/comidas" data-testid="food-bottom-btn">
         <img src={mealIcon} alt="food icon" />
       </Link>
 
-      <Link to="/explorar">
+      <Link to="/explorar" data-testid="explore-bottom-btn">
         <img src={exploreIcon} alt="search icon" />
       </Link>
 
-      <Link to="/bebidas">
+      <Link to="/bebidas" data-testid="drinks-bottom-btn">
         <img src={drinkIcon} alt="drink icon" />
       </Link>
     </footer>
