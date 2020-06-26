@@ -13,20 +13,19 @@ export default function Card({
   }
 
   return (
-    
-      <div
-        onClick={handleClick}
-        data-testid={`${index}-recipe-card`}
-        className="cards"
-      >
-        <img
-          className="images"
-          src={thumb}
-          alt="Meal"
-          data-testid={`${index}-card-img`}
-        />
-        <p data-testid={`${index}-card-name`} className="text-card">{meal}</p>
-      </div>
+    <div
+      onClick={handleClick}
+      data-testid={`${index}-recipe-card`}
+      className="cards"
+    >
+      <img
+        className="images"
+        src={thumb}
+        alt="Meal"
+        data-testid={`${index}-card-img`}
+      />
+      <p data-testid={`${index}-card-name`} className="text-card">{meal}</p>
+    </div>
   );
 }
 
