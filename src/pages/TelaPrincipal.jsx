@@ -12,6 +12,7 @@ export default function Telaprincipal() {
   useEffect(() => {
     store.getContent(location.pathname.slice(1));
     store.getCategories(location.pathname.slice(1));
+    console.log(store)
   }, []);
   return (
     !store.content.length || !store.categories.length ? <Loading />

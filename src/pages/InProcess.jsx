@@ -11,7 +11,6 @@ const _ = require('lodash');
 
 export default function Inprocess() {
   const store = useContext(ProducDetailsContext);
-  const [page, setPage] = useState(0);
   const location = useLocation();
 
   function printIngredients() {
@@ -29,6 +28,30 @@ export default function Inprocess() {
     });
 
     return ingredientsList;
+  }
+
+  function saveDone() {
+    const {
+      strCategory, strAlcoholic, strDrink, strMeal, strDrinkThumb, strMealThumb, strTags,
+    } = store.productDetails;
+    const doneRecipe = {
+      id: store.productDetails.idDrink || store.productDetails.idMeal,
+      type: location.pathname.slice(1).split('/')[0],
+      area: store.productDetails.strArea || '',
+      category: strCategory,
+      alcoholicOrNot: strAlcoholic,
+      name: strDrink || strMeal,
+      image: strMealThumb || strDrinkThumb,
+      doneDate: new Date(),
+      tags: strTags.split(',') || [],
+    };
+
+    const doneArray = JSON.parse(localStorage.getItem('doneRecipes'));
+    if (doneArray) {
+      localStorage.setItem('doneRecipes', JSON.stringify([...doneArray, doneRecipe]));
+    } else {
+      localStorage.setItem('doneRecipes', JSON.stringify([doneRecipe]));
+    }
   }
 
   useEffect(() => {
@@ -75,6 +98,7 @@ export default function Inprocess() {
             style={{ position: 'fixed', bottom: 0 }}
             data-testid="finish-recipe-btn"
             type="button"
+            onClick={saveDone}
           >
             Finalizar Receita
 

@@ -32,6 +32,14 @@ export default function Productdetails() {
     return ingredientsList;
   }
 
+  function isDone() {
+    const product = store.productDetails;
+    const idtoCompare = product.idMeal || product.idDrink;
+    const doneArray = JSON.parse(localStorage.getItem('doneRecipes')) || [];
+
+    return doneArray.some(({ id }) => id === idtoCompare);
+  }
+
   function goToProgress() {
     const inProgress = JSON.parse(localStorage.getItem('inProggressRecipes'));
     const id = store.productDetails.idDrink || store.productDetails.idMeal;
@@ -106,13 +114,14 @@ export default function Productdetails() {
 
           <button
             onClick={goToProgress}
-            style={{ position: 'fixed', bottom: 0 }}
+            style={{ position: 'fixed', bottom: 0, display: isDone() ? 'none' : 'block' }}
             data-testid="start-recipe-btn"
             type="button"
           >
             {buttonText}
 
           </button>
+          )
 
         </div>
       )
