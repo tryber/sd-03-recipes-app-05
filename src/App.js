@@ -1,17 +1,29 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import Telaprincipal from './pages/TelaPrincipal';
+import TPProvider from './contexts/TelaPrincipalContext';
 import Login from './pages/Login';
+import './App.css';
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Switch>
-          <Route exact path="/" component={Login} />
-          {/* <Route patg="/comidas" component={} /> */}
-        </Switch>
-      </div>
-    </Router>
+    <div>
+      <Route exact path="/">
+        <TPProvider>
+          <Login />
+        </TPProvider>
+      </Route>
+      <Route path="/comidas">
+        <TPProvider>
+          <Telaprincipal />
+        </TPProvider>
+      </Route>
+      <Route path="/bebidas">
+        <TPProvider>
+          <Telaprincipal />
+        </TPProvider>
+      </Route>
+    </div>
   );
 }
 
