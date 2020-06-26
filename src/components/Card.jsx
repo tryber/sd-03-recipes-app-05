@@ -13,11 +13,7 @@ export default function Card({
   }
 
   return (
-    <div
-      onClick={handleClick}
-      data-testid={`${index}-recipe-card`}
-      className="cards"
-    >
+    <div className="cards" onClick={handleClick} data-testid={`${index}-recipe-card`}>
       <img
         className="images"
         src={thumb}
