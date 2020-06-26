@@ -1,15 +1,19 @@
 import React from 'react';
-import './App.css';
-import PerfilScreen from './components/PerfilScreen';
-import ExplorerScreen from './components/ExplorerScreen';
+
+
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Login from './pages/Login';
 
 function App() {
   return (
-    <div id="meals">
-      <span>TRYBE</span>
-      <PerfilScreen />
-      <ExplorerScreen />
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route exact path="/" component={Login} />
+          {/* <Route patg="/comidas" component={} /> */}
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
