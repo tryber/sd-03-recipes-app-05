@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import { TelaPrincipalContext } from '../contexts/TelaPrincipalContext';
+import '../style/Comidas.css';
 
 export default function Categoryfilter({ category = 'All' }) {
   const store = useContext(TelaPrincipalContext);
@@ -20,16 +21,13 @@ export default function Categoryfilter({ category = 'All' }) {
     <div
       onClick={handleClick}
       data-testid={`${category}-category-filter`}
+      className="category"
       style={{
-        backgroundColor: store.filter === category ? 'orange' : 'gray',
-        padding: '0.3rem 2.3rem 0.3rem 0.3rem',
-        width: 'fit-content',
-        cursor: 'pointer',
-        margin: 6,
+        backgroundColor: store.filter === category ? 'orange' : 'white',
       }}
     >
 
-      <span style={{ fontSize: 15 }}>{category}</span>
+      <span className="text-category">{category.toUpperCase()}</span>
 
     </div>
   );

@@ -4,6 +4,7 @@ import Card from '../components/Card';
 import Categoryfilter from '../components/CategoryFilter';
 import Loading from '../components/Loading';
 import { TelaPrincipalContext } from '../contexts/TelaPrincipalContext';
+import '../style/Comidas.css';
 
 export default function Telaprincipal() {
   const store = useContext(TelaPrincipalContext);
@@ -16,13 +17,13 @@ export default function Telaprincipal() {
   return (
     !store.content.length || !store.categories.length ? <Loading />
       : (
-        <div>
-          <div style={{ width: 800, display: 'flex', flexWrap: 'wrap' }} className="filters-containers">
+        <div className="body">
+          <div className="container-category">
             <Categoryfilter category="All" />
             {store.categories
               .map((category) => <Categoryfilter key={category} category={category} />)}
           </div>
-          <div style={{ width: 1200, display: 'flex', flexWrap: 'wrap' }}>
+          <div className="filters-container">
 
             {store.content.map((meal, index) => (
               <Card
