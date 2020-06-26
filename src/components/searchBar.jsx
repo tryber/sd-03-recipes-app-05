@@ -6,11 +6,11 @@ function SerachBar() {
     <div>
       <Filter />
       <input
-        type='text'
-        placeholder='Buscar receita'
-        data-testid='search-input'
+        type="text"
+        placeholder="Buscar receita"
+        data-testid="search-input"
       />
-      <button  data-testid='exec-search-btn' >
+      <button data-testid="exec-search-btn" >
         Buscar
       </button>
     </div>
