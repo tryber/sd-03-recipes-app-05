@@ -6,8 +6,8 @@ export default function ExplorerScreen() {
   return (
     <div>
       <h3>Explorar</h3>
-      <Link to="/explorar/comidas">Explorar Comidas</Link>
-      <Link to="/explorar/bebidas">Explorar Bebidas</Link>
+      <Link data-testid="explore-food" to="/explorar/comidas">Explorar Comidas</Link>
+      <Link data-testid="explore-drinks" to="/explorar/bebidas">Explorar Bebidas</Link>
 
       <Footer />
     </div>
