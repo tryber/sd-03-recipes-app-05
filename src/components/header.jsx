@@ -1,20 +1,25 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Route } from 'react-router-dom';
+
 import SearchBar from './searchBar';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 
 function Header() {
+  const [ click, setClick ] = useState(false);
+  console.log(click)
   return (
     <nav>
-      <Link to="/perfil">
+      <Route patch="/perfil">
         <img className="profileIcon" src={profileIcon} alt="icon" />
-      </Link>
+      </Route>
       <h1 className="title">Comida</h1>
-      <button>
+      <button onClick={() => setClick(click === false ? true : false)} >
         <img src={searchIcon} alt="search" />
       </button>
-      <SearchBar />
+      {
+        click === true ? <SearchBar /> : ""
+      }
     </nav>
   );
 }
