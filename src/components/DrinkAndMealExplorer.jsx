@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { getRandomDrink } from '../service/cocktailAPI';
 import { getRandomMeal } from '../service/mealAPI';
 import FoodLoading from '../components/Loading';
+import Footer from './Footer';
 
 export default function DrinkAndMealExplorer() {
   const [link, setLink] = useState('');
@@ -39,6 +40,7 @@ export default function DrinkAndMealExplorer() {
       <Link to={link} data-testid="explore-surprise">
         Me Surpreenda!
       </Link>
+      <Footer />
     </div>
   ) : (
     <FoodLoading />

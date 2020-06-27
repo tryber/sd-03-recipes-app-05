@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Telaprincipal from './pages/TelaPrincipal';
 import DrinkAndMealExplorer from './components/DrinkAndMealExplorer';
 import './App.css';
+import ExplorerScreen from './components/ExplorerScreen';
 
 function App() {
   return (
@@ -23,6 +24,11 @@ function App() {
         <Route exact path="/explorar/:type">
           <TPProvider>
             <DrinkAndMealExplorer />
+          </TPProvider>
+        </Route>
+        <Route exact path="/explorar/">
+          <TPProvider>
+            <ExplorerScreen />
           </TPProvider>
         </Route>
         <Route exact path="/">
