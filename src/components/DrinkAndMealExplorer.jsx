@@ -11,16 +11,15 @@ export default function DrinkAndMealExplorer() {
   const location = useLocation();
 
   const getRandomDrinkOrMeal = async () => {
-    
     const type = location.pathname.slice(10);
-    console.log(type);
+
     if (type === 'comidas') {
-      const idMeal = await getRandomMeal().then(({ idMeal }) => idMeal);
-      setLink(`/comidas/${idMeal}`);
+      const id = await getRandomMeal().then(({ idMeal }) => idMeal);
+      setLink(`/comidas/${id}`);
       return;
     }
-    const idDrink = await getRandomDrink().then(({ idDrink }) => idDrink);
-    setLink(`/bebidas/${idDrink}`);
+    const id = await getRandomDrink().then(({ idDrink }) => idDrink);
+    setLink(`/bebidas/${id}`);
   };
 
   useEffect(() => {

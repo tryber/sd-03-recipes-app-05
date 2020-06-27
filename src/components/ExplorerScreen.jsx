@@ -8,7 +8,7 @@ export default function ExplorerScreen() {
       <h3>Explorar</h3>
       <Link data-testid="explore-food" to="/explorar/comidas">Explorar Comidas</Link>
       <Link data-testid="explore-drinks" to="/explorar/bebidas">Explorar Bebidas</Link>
-      
+
       <Footer />
     </div>
   );
