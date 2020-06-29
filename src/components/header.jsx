@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { Route } from 'react-router-dom';
-
 import SearchBar from './searchBar';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 
 function Header() {
-  const [ click, setClick ] = useState(false);
-  console.log(click)
+  const [click, setClick] = useState(false);
   return (
     <nav>
       <Route patch="/perfil">
@@ -18,10 +16,10 @@ function Header() {
         <img src={searchIcon} alt="search" />
       </button>
       {
-        click === true ? <SearchBar /> : ""
+        click === true ? <SearchBar /> : ''
       }
     </nav>
   );
-}
+};
 
 export default Header;

@@ -7,28 +7,27 @@ import Filter from './filter';
 
 function SerachBar() {
   const { filter } = useFilterAPI();
-  const [ state, setState ] = useState('');
-  const [ product, setProduct ] = useState({});
+  const [state, setState] = useState('');
+  const [setProduct] = useState({});
+
+  const location = useLocation();
+  const path = location.pathname.slice(1).split('/')[0];
 
   function fetchProduct() {
-    const location = useLocation();
-    const path = location.pathname.slice(1).split('/')[0];
-    if(filter === 'nome'){
-      setProduct(
-        path === 'comidas' ? apiM.getByName(state) : apiC.getByName(state)
-      )
-    }
-    if(filter === 'PL'){
-      setProduct(
-        path === 'comidas' ? apiM.filterByFirst(state) : apiC.filterByFirst(state)
-      )
-    }
-    if(filter === 'ingrediente'){
-      setProduct(
-        path === 'comidas' ? apiM.filterByIngredient (state) : apiC.filterByIngredient(state)
-      )
-    }
-  }
+    switch(filter){
+      case 'nome':
+        setProduct(path === 'comidas' ? apiM.getByName(state) : apiC.getByName(state));
+        break;
+      case 'PL':
+        setProduct(path === 'comidas' ? apiM.filterByFirst(state) : apiC.filterByFirst(state));
+        break;
+      case 'ingrediente':
+        setProduct(path === 'comidas' ? apiM.filterByIngredient (state) : apiC.filterByIngredient(state));
+        break;
+      default:
+        console.warn('O filter deve ser igual a nome, pl ou ingrediente!');
+    };
+  };
 
   return (
     <div>
@@ -45,6 +44,6 @@ function SerachBar() {
       </button>
     </div>
   );
-}
+};
 
 export default SerachBar;

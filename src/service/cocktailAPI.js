@@ -21,3 +21,9 @@ export async function filterByIngredient(ingredient) {
   const ingredientReturn = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${ingredient}`).then((r) => r.json());
   return ingredientReturn.drinks;
 }
+
+// Pega todas os drinks de uma letra específico
+export async function filterByFirst(first) {
+  const firstReturn = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${first}`).then((r) => r.json());
+  return firstReturn.drinks;
+}
