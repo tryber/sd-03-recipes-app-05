@@ -71,8 +71,18 @@ export default function Inprocess() {
             alt="thumbnail"
             data-testid="recipe-photo"
           />
-          <p data-testid="recipe-title">{store.productDetails.strMeal || store.productDetails.strDrink}</p>
-          <p data-testid="recipe-category">{store.productDetails.strAlcoholic || store.productDetails.strCategory}</p>
+          <p
+            data-testid="recipe-title"
+          >
+            {store.productDetails.strMeal || store.productDetails.strDrink}
+
+          </p>
+          <p
+            data-testid="recipe-category"
+          >
+            {store.productDetails.strAlcoholic || store.productDetails.strCategory}
+
+          </p>
           <Favcontainer />
           <div>
             <p>Ingredients</p>

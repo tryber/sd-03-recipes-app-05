@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
-import share from '../images/shareIcon.svg';
-import heart from '../images/whiteHeartIcon.svg';
 import { ProducDetailsContext } from '../contexts/ProducDetailsContext';
 import Loading from '../components/Loading';
 import Minicard from '../components/MiniCard';
@@ -11,7 +9,7 @@ const _ = require('lodash');
 
 export default function Productdetails() {
   const store = useContext(ProducDetailsContext);
-  const [page, setPage] = useState(0);
+  const [page] = useState(0);
   const location = useLocation();
   const history = useHistory();
   const [buttonText, setButtonText] = useState('Iniciar Receita');
@@ -78,13 +76,19 @@ export default function Productdetails() {
           />
           <p data-testid="recipe-title">{store.productDetails.strMeal || store.productDetails.strDrink}</p>
           <p data-testid="recipe-category">{store.productDetails.strAlcoholic || store.productDetails.strCategory}</p>
-          {/* <img data-testid="share-btn" src={share} alt="" />
-          <img data-testid="favorite-btn" src={heart} alt="" /> */}
           <Favcontainer />
           <div>
             <p>Ingredients</p>
             <div>
-              {printIngredients().map((ingredients, index) => <p data-testid={`${index}-ingredient-name-and-measure`} key={_.uniqueId()}>{ingredients}</p>)}
+              {printIngredients()
+                .map((ingredients, index) => (
+                  <p
+                    data-testid={`${index}-ingredient-name-and-measure`}
+                    key={_.uniqueId()}
+                  >
+                    {ingredients}
+                  </p>
+                ))}
             </div>
           </div>
           <div data-testid="instructions">

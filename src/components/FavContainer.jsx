@@ -70,7 +70,13 @@ export default function Favcontainer() {
         src={share}
         alt=""
       />
-      <img onClick={setFavorite} data-testid="favorite-btn" src={fav ? favHeart : heart} alt="" />
+      <img
+        role="presentation"
+        onClick={setFavorite}
+        data-testid="favorite-btn"
+        src={fav ? favHeart : heart}
+        alt=""
+      />
 
       {aria && (
       <p style={{
