@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 // import { ProducDetailsContext } from '../contexts/ProducDetailsContext';
 
 const _ = require('lodash');
