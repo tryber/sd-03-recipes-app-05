@@ -2,6 +2,8 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import Telaprincipal from './pages/TelaPrincipal';
 import TPProvider from './contexts/TelaPrincipalContext';
+import FilterAPI from './contexts/filterAPI';
+import Header from './components/header';
 import Login from './pages/Login';
 import './App.css';
 
@@ -23,6 +25,9 @@ function App() {
           <Telaprincipal />
         </TPProvider>
       </Route>
+      <FilterAPI>
+        <Header />
+      </FilterAPI>
     </div>
   );
 }
