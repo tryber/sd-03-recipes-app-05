@@ -8,6 +8,38 @@ import { ProducDetailsContext } from '../contexts/ProducDetailsContext';
 
 const ClipboardJS = require('clipboard');
 
+function setFavorite(store, fav, location, setFav) {
+  if (!fav) {
+    const {
+      strCategory, strAlcoholic, strDrink, strMeal, strDrinkThumb, strMealThumb,
+    } = store.productDetails;
+    const favorite = {
+      id: store.productDetails.idDrink || store.productDetails.idMeal,
+      type: location.pathname.slice(1).split('/')[0],
+      area: store.productDetails.strArea || '',
+      category: strCategory,
+      alcoholicOrNot: strAlcoholic,
+      name: strDrink || strMeal,
+      image: strMealThumb || strDrinkThumb,
+    };
+
+    const favArray = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    if (favArray) {
+      localStorage.setItem('favoriteRecipes', JSON.stringify([...favArray, favorite]));
+    } else {
+      localStorage.setItem('favoriteRecipes', JSON.stringify([favorite]));
+    }
+
+    setFav(true);
+  } else {
+    const thisId = store.productDetails.idDrink || store.productDetails.idMeal;
+    setFav(false);
+    const favArray = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    localStorage.setItem('favoriteRecipes',
+      JSON.stringify(favArray.filter(({ id }) => id !== thisId)));
+  }
+}
+
 export default function Favcontainer() {
   const location = useLocation();
   const [aria, setAria] = useState(false);
@@ -28,38 +60,6 @@ export default function Favcontainer() {
     });
   }, []);
 
-  function setFavorite() {
-    if (!fav) {
-      const {
-        strCategory, strAlcoholic, strDrink, strMeal, strDrinkThumb, strMealThumb,
-      } = store.productDetails;
-      const favorite = {
-        id: store.productDetails.idDrink || store.productDetails.idMeal,
-        type: location.pathname.slice(1).split('/')[0],
-        area: store.productDetails.strArea || '',
-        category: strCategory,
-        alcoholicOrNot: strAlcoholic,
-        name: strDrink || strMeal,
-        image: strMealThumb || strDrinkThumb,
-      };
-
-      const favArray = JSON.parse(localStorage.getItem('favoriteRecipes'));
-      if (favArray) {
-        localStorage.setItem('favoriteRecipes', JSON.stringify([...favArray, favorite]));
-      } else {
-        localStorage.setItem('favoriteRecipes', JSON.stringify([favorite]));
-      }
-
-      setFav(true);
-    } else {
-      const thisId = store.productDetails.idDrink || store.productDetails.idMeal;
-      setFav(false);
-      const favArray = JSON.parse(localStorage.getItem('favoriteRecipes'));
-      localStorage.setItem('favoriteRecipes',
-        JSON.stringify(favArray.filter(({ id }) => id !== thisId)));
-    }
-  }
-
   return (
     <div>
       <img
@@ -72,12 +72,11 @@ export default function Favcontainer() {
       />
       <button
         type="button"
-        onClick={setFavorite}
+        onClick={() => setFavorite(store, fav, location, setFav)}
         data-testid="favorite-btn"
       >
 
         <img
-
           src={fav ? favHeart : heart}
           alt=""
         />
