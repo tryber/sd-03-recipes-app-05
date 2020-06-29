@@ -5,6 +5,7 @@ import heart from '../images/whiteHeartIcon.svg';
 import { ProducDetailsContext } from '../contexts/ProducDetailsContext';
 import Loading from '../components/Loading';
 import Minicard from '../components/MiniCard';
+import Favcontainer from '../components/FavContainer';
 
 const _ = require('lodash');
 
@@ -77,8 +78,9 @@ export default function Productdetails() {
           />
           <p data-testid="recipe-title">{store.productDetails.strMeal || store.productDetails.strDrink}</p>
           <p data-testid="recipe-category">{store.productDetails.strAlcoholic || store.productDetails.strCategory}</p>
-          <img data-testid="share-btn" src={share} alt="" />
-          <img data-testid="favorite-btn" src={heart} alt="" />
+          {/* <img data-testid="share-btn" src={share} alt="" />
+          <img data-testid="favorite-btn" src={heart} alt="" /> */}
+          <Favcontainer />
           <div>
             <p>Ingredients</p>
             <div>

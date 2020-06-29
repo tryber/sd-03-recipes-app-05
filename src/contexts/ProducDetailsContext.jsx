@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { createContext, useState } from 'react';
-import { getById, getRandom, getByName } from '../service/mealAPI';
-import { getById as getDrinkById, getRandom as getDrinkRandom, getByName as getDrinkCategoryList } from '../service/cocktailAPI';
+import { getById, getByName } from '../service/mealAPI';
+import { getById as getDrinkById, getByName as getDrinkCategoryList } from '../service/cocktailAPI';
 
 export const ProducDetailsContext = createContext();
 
@@ -13,15 +13,6 @@ async function changeProductDetails(type, id) {
   }
   return undefined;
 }
-
-// async function changeRecomendations(type) {
-//   if (type === 'comidas') {
-//     return getDrinkRandom();
-//   } if (type === 'bebidas') {
-//     return getRandom();
-//   }
-//   return undefined;
-// }
 
 async function changeRecomendations(type) {
   if (type === 'comidas') {
@@ -42,16 +33,6 @@ const Provider = ({ children }) => {
   }
 
   async function getRecomendations(type) {
-    // TODO: TIRAR ESSAS 2 FETCHES ASSIM QUE POSSÍVEL
-
-    // const recomendationsArray = await Promise.all([
-    //   changeRecomendations(type),
-    //   changeRecomendations(type),
-    //   changeRecomendations(type),
-    //   changeRecomendations(type),
-    //   changeRecomendations(type),
-    //   changeRecomendations(type)]);
-
     setRecomendations((await changeRecomendations(type)).slice(0, 6));
   }
 

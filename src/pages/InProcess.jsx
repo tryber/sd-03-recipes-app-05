@@ -1,17 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import share from '../images/shareIcon.svg';
-import heart from '../images/whiteHeartIcon.svg';
+import React, { useContext, useEffect } from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
 import { ProducDetailsContext } from '../contexts/ProducDetailsContext';
 import Loading from '../components/Loading';
-import Minicard from '../components/MiniCard';
 import Checkboxingredient from '../components/CheckBoxIngredient';
+import Favcontainer from '../components/FavContainer';
 
 const _ = require('lodash');
 
 export default function Inprocess() {
   const store = useContext(ProducDetailsContext);
   const location = useLocation();
+  const history = useHistory();
 
   function printIngredients() {
     const ingredients = Object.keys(store.productDetails).filter((product) => product.includes('strIngredient'));
@@ -52,6 +51,8 @@ export default function Inprocess() {
     } else {
       localStorage.setItem('doneRecipes', JSON.stringify([doneRecipe]));
     }
+
+    history.push('/receitas-feitas');
   }
 
   useEffect(() => {
@@ -72,8 +73,7 @@ export default function Inprocess() {
           />
           <p data-testid="recipe-title">{store.productDetails.strMeal || store.productDetails.strDrink}</p>
           <p data-testid="recipe-category">{store.productDetails.strAlcoholic || store.productDetails.strCategory}</p>
-          <img data-testid="share-btn" src={share} alt="" />
-          <img data-testid="favorite-btn" src={heart} alt="" />
+          <Favcontainer />
           <div>
             <p>Ingredients</p>
             <div>
