@@ -9,7 +9,7 @@ function clearStorage() {
 export default function PerfilScreen() {
   return (
     <div>
-      <p data-testid="profile-email">{parse.JSON(localStorage.getItem('email'))}</p>
+      <p data-testid="profile-email">{JSON.parse(localStorage.getItem('email'))}</p>
       <Link to="/receitas-feitas" data-testid="profile-done-btn">Receitas Feitas</Link>
       <Link to="/receitas-favoritas" data-testid="profile-favorite-btn">Receitas Favoritas</Link>
       <Link to="/" onClick={() => clearStorage()} data-testid="profile-logout-btn">Sair</Link>
