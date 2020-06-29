@@ -34,6 +34,25 @@ function saveDone(store, history, location) {
   history.push('/receitas-feitas');
 }
 
+function renderIngredients(store) {
+  return (
+    <div>
+      <p>Ingredients</p>
+      <div>
+        {printIngredients(store)
+          .map((ingredients, index) => (
+            <Checkboxingredient
+              key={_.uniqueId()}
+              index={index}
+            >
+              {ingredients}
+            </Checkboxingredient>
+          ))}
+      </div>
+    </div>
+  );
+}
+
 export default function Inprocess() {
   const store = useContext(ProducDetailsContext);
   const location = useLocation();
@@ -55,39 +74,17 @@ export default function Inprocess() {
             alt="thumbnail"
             data-testid="recipe-photo"
           />
-          <p
-            data-testid="recipe-title"
-          >
+          <p data-testid="recipe-title">
             {store.productDetails.strMeal || store.productDetails.strDrink}
-
           </p>
-          <p
-            data-testid="recipe-category"
-          >
+          <p data-testid="recipe-category">
             {store.productDetails.strAlcoholic || store.productDetails.strCategory}
-
           </p>
           <Favcontainer />
-          <div>
-            <p>Ingredients</p>
-            <div>
-              {printIngredients(store)
-                .map((ingredients, index) => (
-                  <Checkboxingredient
-                    key={_.uniqueId()}
-                    index={index}
-                  >
-
-                    {ingredients}
-
-                  </Checkboxingredient>
-                ))}
-            </div>
-          </div>
+          {renderIngredients(store)}
           <div data-testid="instructions">
             {store.productDetails.strInstructions}
           </div>
-
           <button
             style={{ position: 'fixed', bottom: 0 }}
             data-testid="finish-recipe-btn"
@@ -95,7 +92,6 @@ export default function Inprocess() {
             onClick={() => saveDone(store, history, location)}
           >
             Finalizar Receita
-
           </button>
 
         </div>

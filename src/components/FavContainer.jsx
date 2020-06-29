@@ -40,6 +40,19 @@ function setFavorite(store, fav, location, setFav) {
   }
 }
 
+function renderImage(location) {
+  return (
+    <img
+      className="clip"
+      style={{ cursor: 'pointer' }}
+      data-testid="share-btn"
+      data-clipboard-text={`localhost:3000${location.pathname}`}
+      src={share}
+      alt=""
+    />
+  );
+}
+
 export default function Favcontainer() {
   const location = useLocation();
   const [aria, setAria] = useState(false);
@@ -62,20 +75,12 @@ export default function Favcontainer() {
 
   return (
     <div>
-      <img
-        className="clip"
-        style={{ cursor: 'pointer' }}
-        data-testid="share-btn"
-        data-clipboard-text={`localhost:3000${location.pathname}`}
-        src={share}
-        alt=""
-      />
+      {renderImage(location)}
       <button
         type="button"
         onClick={() => setFavorite(store, fav, location, setFav)}
         data-testid="favorite-btn"
       >
-
         <img
           src={fav ? favHeart : heart}
           alt=""
