@@ -14,14 +14,14 @@ function saveDone(store, history, location) {
   } = store.productDetails;
   const doneRecipe = {
     id: store.productDetails.idDrink || store.productDetails.idMeal,
-    type: location.pathname.slice(1).split('/')[0],
+    type: location.pathname.slice(1).split('/')[0].slice(0, 6),
     area: store.productDetails.strArea || '',
     category: strCategory,
     alcoholicOrNot: strAlcoholic,
     name: strDrink || strMeal,
     image: strMealThumb || strDrinkThumb,
     doneDate: new Date(),
-    tags: strTags.split(',') || [],
+    tags: (strTags && strTags.split(',')) || [],
   };
 
   const doneArray = JSON.parse(localStorage.getItem('doneRecipes'));
