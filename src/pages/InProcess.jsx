@@ -93,7 +93,6 @@ export default function Inprocess() {
           >
             Finalizar Receita
           </button>
-
         </div>
       )
   );

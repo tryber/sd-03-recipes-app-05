@@ -9,18 +9,26 @@ import { ProducDetailsContext } from '../contexts/ProducDetailsContext';
 const ClipboardJS = require('clipboard');
 
 function setFavorite(store, fav, location, setFav) {
+  function renderId() {
+    return store.productDetails.idDrink || store.productDetails.idMeal;
+  }
+  function renderName() {
+    return store.productDetails.strDrink || store.productDetails.strMeal;
+  }
+  function renderThumb() {
+    return store.productDetails.strMealThumb || store.productDetails.strDrinkThumb;
+  }
+
   if (!fav) {
-    const {
-      strCategory, strAlcoholic, strDrink, strMeal, strDrinkThumb, strMealThumb,
-    } = store.productDetails;
+    const { strCategory, strAlcoholic } = store.productDetails;
     const favorite = {
-      id: store.productDetails.idDrink || store.productDetails.idMeal,
+      id: renderId(),
       type: location.pathname.slice(1).split('/')[0],
       area: store.productDetails.strArea || '',
       category: strCategory,
       alcoholicOrNot: strAlcoholic,
-      name: strDrink || strMeal,
-      image: strMealThumb || strDrinkThumb,
+      name: renderName(),
+      image: renderThumb(),
     };
 
     const favArray = JSON.parse(localStorage.getItem('favoriteRecipes'));

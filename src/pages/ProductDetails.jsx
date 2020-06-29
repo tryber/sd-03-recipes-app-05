@@ -83,6 +83,17 @@ function renderYoutube(store) {
   );
 }
 
+function renderImage(store) {
+  return (
+    <img
+      style={{ width: 400, height: 400 }}
+      src={store.productDetails.strMealThumb || store.productDetails.strDrinkThumb}
+      alt="thumbnail"
+      data-testid="recipe-photo"
+    />
+  );
+}
+
 export default function Productdetails() {
   const store = useContext(ProducDetailsContext);
   const [page] = useState(0);
@@ -101,12 +112,7 @@ export default function Productdetails() {
     _.isEmpty(store.productDetails) ? <Loading />
       : (
         <div style={{ width: 500 }}>
-          <img
-            style={{ width: 400, height: 400 }}
-            src={store.productDetails.strMealThumb || store.productDetails.strDrinkThumb}
-            alt="thumbnail"
-            data-testid="recipe-photo"
-          />
+          {renderImage(store)}
           <p data-testid="recipe-title">
             {store.productDetails.strMeal || store.productDetails.strDrink}
           </p>
