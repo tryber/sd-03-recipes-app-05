@@ -40,7 +40,7 @@ export default function DrinkAndMealExplorer() {
           </Link>
         )}
         <Link to={link} data-testid="explore-surprise">
-        <button className="btn-3">Me surpreenda!</button>
+          <button className="btn-3">Me surpreenda!</button>
         </Link>
       </section>
       <Footer />
