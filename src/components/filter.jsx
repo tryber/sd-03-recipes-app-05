@@ -4,8 +4,6 @@ import { useFilterAPI } from '../contexts/filterAPI';
 function Filter() {
   const { setFilter } = useFilterAPI();
 
-
-
   return (
     <form name="Filtro">
       <input

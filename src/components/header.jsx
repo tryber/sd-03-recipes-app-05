@@ -12,7 +12,7 @@ function Header() {
         <img className="profileIcon" src={profileIcon} alt="icon" />
       </Route>
       <h1 className="title">Comida</h1>
-      <button onClick={() => setClick(click === false ? true : false)} >
+      <button onClick={() => setClick(click === false)} >
         <img src={searchIcon} alt="search" />
       </button>
       {
