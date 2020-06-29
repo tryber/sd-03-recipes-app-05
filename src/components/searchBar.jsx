@@ -12,20 +12,20 @@ const [setProduct] = useState({});
 const location = useLocation();
 const path = location.pathname.slice(1).split('/')[0];
 
-const nome = setProduct(path === 'comidas' ? apiM.getByName(state) : apiC.getByName(state));
-const pl = setProduct(path === 'comidas' ? apiM.filterByFirst(state) : apiC.filterByFirst(state));
-const ingredientes = setProduct(path === 'comidas' ? apiM.filterByIngredient(state) : apiC.filterByIngredient(state));
+const nome = () => setProduct(path === 'comidas' ? apiM.getByName(state) : apiC.getByName(state));
+const pl = () => setProduct(path === 'comidas' ? apiM.filterByFirst(state) : apiC.filterByFirst(state));
+const ingredientes = () => setProduct(path === 'comidas' ? apiM.filterByIngredient(state) : apiC.filterByIngredient(state));
 
 function fetchProduct() {
   switch (filter) {
     case 'nome':
-      nome
+      nome();
       break;
     case 'PL':
-      pl
+      pl();
       break;
     case 'ingrediente':
-      ingredientes
+      ingredientes();
       break;
     default:
       console.warn('O filter deve ser igual a nome, pl ou ingrediente!');
