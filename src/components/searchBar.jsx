@@ -12,16 +12,20 @@ const [setProduct] = useState({});
 const location = useLocation();
 const path = location.pathname.slice(1).split('/')[0];
 
+const nome = setProduct(path === 'comidas' ? apiM.getByName(state) : apiC.getByName(state));
+const pl = setProduct(path === 'comidas' ? apiM.filterByFirst(state) : apiC.filterByFirst(state));
+const ingredientes = setProduct(path === 'comidas' ? apiM.filterByIngredient(state) : apiC.filterByIngredient(state));
+
 function fetchProduct() {
-  switch(filter) {
+  switch (filter) {
     case 'nome':
-      setProduct(path === 'comidas' ? apiM.getByName(state) : apiC.getByName(state));
+      nome
       break;
     case 'PL':
-      setProduct(path === 'comidas' ? apiM.filterByFirst(state) : apiC.filterByFirst(state));
+      pl
       break;
     case 'ingrediente':
-      setProduct(path === 'comidas' ? apiM.filterByIngredient(state) : apiC.filterByIngredient(state));
+      ingredientes
       break;
     default:
       console.warn('O filter deve ser igual a nome, pl ou ingrediente!');
@@ -39,7 +43,7 @@ function SerachBar() {
         value={state}
         onChange={(e) => setState(e.target.value)}
       />
-      <button data-testid="exec-search-btn" onClick={() => fetchProduct() } >
+      <button data-testid="exec-search-btn" onClick={() => fetchProduct()} >
         Buscar
       </button>
     </div>
