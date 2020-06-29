@@ -1,0 +1,32 @@
+.body {
+  background-color: #ffe5d9;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 640px;
+  width: 360px;
+}
+
+.btn {
+  background-color: rgb(103, 4, 170);
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0 1px 1px 0 rgba(64, 6, 75, 0.835);
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 10px 60px;
+  padding: 15px 80px;
+}
+
+.btn:hover {
+  background-color: rgb(69, 13, 121);
+  cursor: pointer;
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  margin-top: 200px;
+}
