@@ -1,8 +1,28 @@
 import PropTypes from 'prop-types';
 import React, { useState, useContext } from 'react';
-import { ProducDetailsContext } from '../contexts/ProducDetailsContext';
+// import { ProducDetailsContext } from '../contexts/ProducDetailsContext';
 
 const _ = require('lodash');
+
+function check(recipeId, index, checked, setChecked) {
+  let recipe;
+  let inProgress;
+  try {
+    inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    recipe = inProgress[recipeId];
+  } catch (e) {
+    inProgress = [];
+    recipe = [];
+  }
+  if (recipe.includes(index)) {
+    _.pull(recipe, index);
+  } else {
+    recipe.push(index);
+  }
+  localStorage.setItem('inProgressRecipes', JSON.stringify({ ...inProgress, [recipeId]: recipe }));
+  // store.setRecipes({ ...inProgress, [recipeId]: recipe });
+  setChecked(!checked);
+}
 
 export default function Checkboxingredient({ index, children, recipeId }) {
   function setCheckState() {
@@ -14,27 +34,7 @@ export default function Checkboxingredient({ index, children, recipeId }) {
     }
   }
   const [checked, setChecked] = useState(setCheckState());
-  const store = useContext(ProducDetailsContext);
-
-  function check() {
-    let recipe;
-    let inProgress;
-    try {
-      inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
-      recipe = inProgress[recipeId];
-    } catch (e) {
-      inProgress = [];
-      recipe = [];
-    }
-    if (recipe.includes(index)) {
-      _.pull(recipe, index);
-    } else {
-      recipe.push(index);
-    }
-    localStorage.setItem('inProgressRecipes', JSON.stringify({ ...inProgress, [recipeId]: recipe }));
-    // store.setRecipes({ ...inProgress, [recipeId]: recipe });
-    setChecked(!checked);
-  }
+  // const store = useContext(ProducDetailsContext);
 
   return (
     <div
@@ -43,7 +43,7 @@ export default function Checkboxingredient({ index, children, recipeId }) {
     >
       <input
         checked={checked}
-        onChange={check}
+        onChange={() => check(recipeId, index, checked, setChecked)}
         type="checkbox"
         name="ingredient"
         id="ingredient"

@@ -55,6 +55,17 @@ function renderIngredients(store, location) {
   );
 }
 
+function renderImage(store) {
+  return (
+    <img
+      style={{ width: 399, height: 299 }}
+      src={store.productDetails.strMealThumb || store.productDetails.strDrinkThumb}
+      alt="thumbnail"
+      data-testid="recipe-photo"
+    />
+  );
+}
+
 export default function Inprocess() {
   const store = useContext(ProducDetailsContext);
   const location = useLocation();
@@ -79,12 +90,7 @@ export default function Inprocess() {
     _.isEmpty(store.productDetails) ? <Loading />
       : (
         <div style={{ width: 500 }}>
-          <img
-            style={{ width: 399, height: 299 }}
-            src={store.productDetails.strMealThumb || store.productDetails.strDrinkThumb}
-            alt="thumbnail"
-            data-testid="recipe-photo"
-          />
+          {renderImage(store)}
           <p data-testid="recipe-title">
             {store.productDetails.strMeal || store.productDetails.strDrink}
           </p>
@@ -102,7 +108,7 @@ export default function Inprocess() {
             data-testid="finish-recipe-btn"
             type="button"
             onClick={() => saveDone(store, history, location)}
-            // disabled={!done}
+            disabled={done}
           >
             Finalizar Receita
           </button>
