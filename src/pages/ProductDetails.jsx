@@ -17,10 +17,10 @@ function isDone(store) {
 }
 
 function goToProgress(store, buttonText, location, history) {
-  const inProgress = JSON.parse(localStorage.getItem('inProggressRecipes'));
+  const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
   const id = store.productDetails.idDrink || store.productDetails.idMeal;
   if (buttonText === 'Iniciar Receita') {
-    localStorage.setItem('inProggressRecipes', JSON.stringify({ ...inProgress, [id]: [] }));
+    localStorage.setItem('inProgressRecipes', JSON.stringify({ ...inProgress, [id]: [] }));
   }
 
   const path = location.pathname;
@@ -28,7 +28,7 @@ function goToProgress(store, buttonText, location, history) {
 }
 
 function makeButtonText(id) {
-  const inProgress = JSON.parse(localStorage.getItem('inProggressRecipes'));
+  const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
   if (!inProgress) return 'Iniciar Receita';
 
   return Object.keys(inProgress).includes(id) ? 'Continuar Receita' : 'Iniciar Receita';
@@ -99,7 +99,7 @@ export default function Productdetails() {
   const [page] = useState(0);
   const location = useLocation();
   const history = useHistory();
-  const [buttonText, setButtonText] = useState('Iniciar Receita');
+  const [buttonText, setButtonText] = useState('Iniciar receita');
 
   useEffect(() => {
     const [type, id] = location.pathname.slice(1).split('/');

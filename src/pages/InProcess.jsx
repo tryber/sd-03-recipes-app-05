@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import { ProducDetailsContext } from '../contexts/ProducDetailsContext';
 import Loading from '../components/Loading';
@@ -34,7 +34,7 @@ function saveDone(store, history, location) {
   history.push('/receitas-feitas');
 }
 
-function renderIngredients(store) {
+function renderIngredients(store, location) {
   return (
     <div>
       <p>Ingredients</p>
@@ -44,6 +44,8 @@ function renderIngredients(store) {
             <Checkboxingredient
               key={_.uniqueId()}
               index={index}
+              recipeId={location.pathname.slice(1).split('/')[1]}
+
             >
               {ingredients}
             </Checkboxingredient>
@@ -57,12 +59,21 @@ export default function Inprocess() {
   const store = useContext(ProducDetailsContext);
   const location = useLocation();
   const history = useHistory();
+  const [type, id] = location.pathname.slice(1).split('/');
+  const [done, setDone] = useState(false);
 
   useEffect(() => {
-    const [type, id] = location.pathname.slice(1).split('/');
     store.getProductDetails(type, id);
     store.getRecomendations(type);
   }, []);
+
+  useEffect(() => {
+    try {
+      setDone(printIngredients(store).length === JSON.parse(localStorage.getItem('inProgressRecipes'))[id].length);
+    } catch (e) {
+      setDone(false);
+    }
+  });
 
   return (
     _.isEmpty(store.productDetails) ? <Loading />
@@ -81,18 +92,21 @@ export default function Inprocess() {
             {store.productDetails.strAlcoholic || store.productDetails.strCategory}
           </p>
           <Favcontainer />
-          {renderIngredients(store)}
+          {renderIngredients(store, location)}
           <div data-testid="instructions">
             {store.productDetails.strInstructions}
           </div>
+
           <button
             style={{ position: 'fixed', bottom: 0 }}
             data-testid="finish-recipe-btn"
             type="button"
             onClick={() => saveDone(store, history, location)}
+            // disabled={!done}
           >
             Finalizar Receita
           </button>
+
         </div>
       )
   );

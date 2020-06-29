@@ -26,6 +26,7 @@ async function changeRecomendations(type) {
 const Provider = ({ children }) => {
   const [productDetails, setProductDetails] = useState({});
   const [recomendations, setRecomendations] = useState([]);
+  const [recipes, setRecipes] = useState([]);
 
   async function getProductDetails(type, id) {
     console.log('getting');
@@ -41,6 +42,8 @@ const Provider = ({ children }) => {
     getProductDetails,
     recomendations,
     getRecomendations,
+    recipes,
+    setRecipes,
 
   };
 

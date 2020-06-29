@@ -3,10 +3,7 @@ import { useLocation } from 'react-router-dom';
 import share from '../images/shareIcon.svg';
 import heart from '../images/whiteHeartIcon.svg';
 import favHeart from '../images/blackHeartIcon.svg';
-
 import { ProducDetailsContext } from '../contexts/ProducDetailsContext';
-
-const ClipboardJS = require('clipboard');
 
 function renderId(store) {
   return store.productDetails.idDrink || store.productDetails.idMeal;
@@ -25,10 +22,10 @@ function setFavorite(store, fav, location, setFav) {
     const { strCategory, strAlcoholic } = store.productDetails;
     const favorite = {
       id: renderId(store),
-      type: location.pathname.slice(1).split('/')[0],
+      type: location.pathname.slice(1).split('/')[0].slice(0, 6),
       area: store.productDetails.strArea || '',
       category: strCategory,
-      alcoholicOrNot: strAlcoholic,
+      alcoholicOrNot: strAlcoholic || '',
       name: renderName(store),
       image: renderThumb(store),
     };
@@ -50,16 +47,28 @@ function setFavorite(store, fav, location, setFav) {
   }
 }
 
-function renderImage(location) {
+function copyContent(location, setAria) {
+  const [type, id] = location.pathname.slice(1).split('/');
+  navigator.clipboard.writeText(`http://localhost:3000/${type}/${id}`).then(() => {
+    setAria(true);
+    setTimeout(() => setAria(false), 2000);
+  });
+}
+
+function renderImage(location, setAria) {
   return (
-    <img
-      className="clip"
-      style={{ cursor: 'pointer' }}
+    <button
+      type="button"
       data-testid="share-btn"
-      data-clipboard-text={`localhost:3000${location.pathname}`}
-      src={share}
-      alt=""
-    />
+      onClick={() => copyContent(location, setAria)}
+    >
+      <img
+        className="clip"
+        style={{ cursor: 'pointer' }}
+        src={share}
+        alt=""
+      />
+    </button>
   );
 }
 
@@ -70,28 +79,23 @@ export default function Favcontainer() {
   const store = useContext(ProducDetailsContext);
 
   useEffect(() => {
-    const clipboard = new ClipboardJS('.clip');
     const thisId = store.productDetails.idDrink || store.productDetails.idMeal;
 
     const favArray = JSON.parse(localStorage.getItem('favoriteRecipes'));
 
     if (favArray)setFav(favArray.some(({ id }) => id === thisId));
-
-    clipboard.on('success', function () {
-      setAria(true);
-      setTimeout(() => setAria(false), 2000);
-    });
   }, []);
 
   return (
     <div>
-      {renderImage(location)}
+      {renderImage(location, setAria)}
       <button
         type="button"
         onClick={() => setFavorite(store, fav, location, setFav)}
-        data-testid="favorite-btn"
+
       >
         <img
+          data-testid="favorite-btn"
           src={fav ? favHeart : heart}
           alt=""
         />
