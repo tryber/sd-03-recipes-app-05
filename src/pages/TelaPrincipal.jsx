@@ -4,6 +4,7 @@ import Card from '../components/Card';
 import Categoryfilter from '../components/CategoryFilter';
 import Loading from '../components/Loading';
 import { TelaPrincipalContext } from '../contexts/TelaPrincipalContext';
+import Footer from '../components/Footer';
 import '../style/Comidas.css';
 
 export default function Telaprincipal() {
@@ -24,7 +25,6 @@ export default function Telaprincipal() {
               .map((category) => <Categoryfilter key={category} category={category} />)}
           </div>
           <div className="filters-container">
-
             {store.content.map((meal, index) => (
               <Card
                 id={meal.idMeal || meal.idDrink}
@@ -34,11 +34,9 @@ export default function Telaprincipal() {
                 meal={meal.strMeal || meal.strDrink}
               />
             ))}
-
           </div>
-
+        <Footer />
         </div>
-
       )
   );
 }
