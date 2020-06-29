@@ -1,3 +1,7 @@
+import React from 'react';
+import { Route } from 'react-router-dom';
+import Telaprincipal from './pages/TelaPrincipal';
+import TPProvider from './contexts/TelaPrincipalContext';
 import Login from './pages/Login';
 import './App.css';
 
