@@ -79,15 +79,16 @@ export default function Favcontainer() {
       />
 
       {aria && (
-      <p style={{
-        position: 'fixed',
-        top: 10,
-        right: '50%',
-        backgroundColor: 'rgba(0,0,0,0.6)',
-        padding: '4px 8px',
-        color: 'white',
+      <p
+        style={{
+          position: 'fixed',
+          top: 10,
+          right: '50%',
+          backgroundColor: 'rgba(0,0,0,0.6)',
+          padding: '4px 8px',
+          color: 'white',
 
-      }}
+        }}
       >
         Link copiado!
       </p>

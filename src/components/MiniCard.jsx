@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 export default function Minicard({
@@ -16,3 +17,11 @@ export default function Minicard({
     </div>
   );
 }
+
+Minicard.propTypes = {
+  category: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
+  style: PropTypes.objectOf(PropTypes.any).isRequired,
+  thumb: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+};
