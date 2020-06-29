@@ -1,4 +1,4 @@
-export function printIngredients(store) {
+export default function printIngredients(store) {
   const ingredients = Object.keys(store.productDetails).filter((product) => product.includes('strIngredient'));
   const ingredientsList = [];
   ingredients.every((ingredient, i) => {

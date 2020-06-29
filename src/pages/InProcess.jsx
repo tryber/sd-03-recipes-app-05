@@ -4,40 +4,40 @@ import { ProducDetailsContext } from '../contexts/ProducDetailsContext';
 import Loading from '../components/Loading';
 import Checkboxingredient from '../components/CheckBoxIngredient';
 import Favcontainer from '../components/FavContainer';
-import { printIngredients } from '../service/utilFunctions';
+import printIngredients from '../service/utilFunctions';
 
 const _ = require('lodash');
+
+function saveDone(store, history, location) {
+  const {
+    strCategory, strAlcoholic, strDrink, strMeal, strDrinkThumb, strMealThumb, strTags,
+  } = store.productDetails;
+  const doneRecipe = {
+    id: store.productDetails.idDrink || store.productDetails.idMeal,
+    type: location.pathname.slice(1).split('/')[0],
+    area: store.productDetails.strArea || '',
+    category: strCategory,
+    alcoholicOrNot: strAlcoholic,
+    name: strDrink || strMeal,
+    image: strMealThumb || strDrinkThumb,
+    doneDate: new Date(),
+    tags: strTags.split(',') || [],
+  };
+
+  const doneArray = JSON.parse(localStorage.getItem('doneRecipes'));
+  if (doneArray) {
+    localStorage.setItem('doneRecipes', JSON.stringify([...doneArray, doneRecipe]));
+  } else {
+    localStorage.setItem('doneRecipes', JSON.stringify([doneRecipe]));
+  }
+
+  history.push('/receitas-feitas');
+}
 
 export default function Inprocess() {
   const store = useContext(ProducDetailsContext);
   const location = useLocation();
   const history = useHistory();
-
-  function saveDone() {
-    const {
-      strCategory, strAlcoholic, strDrink, strMeal, strDrinkThumb, strMealThumb, strTags,
-    } = store.productDetails;
-    const doneRecipe = {
-      id: store.productDetails.idDrink || store.productDetails.idMeal,
-      type: location.pathname.slice(1).split('/')[0],
-      area: store.productDetails.strArea || '',
-      category: strCategory,
-      alcoholicOrNot: strAlcoholic,
-      name: strDrink || strMeal,
-      image: strMealThumb || strDrinkThumb,
-      doneDate: new Date(),
-      tags: strTags.split(',') || [],
-    };
-
-    const doneArray = JSON.parse(localStorage.getItem('doneRecipes'));
-    if (doneArray) {
-      localStorage.setItem('doneRecipes', JSON.stringify([...doneArray, doneRecipe]));
-    } else {
-      localStorage.setItem('doneRecipes', JSON.stringify([doneRecipe]));
-    }
-
-    history.push('/receitas-feitas');
-  }
 
   useEffect(() => {
     const [type, id] = location.pathname.slice(1).split('/');
@@ -71,7 +71,7 @@ export default function Inprocess() {
           <div>
             <p>Ingredients</p>
             <div>
-              {printIngredients()
+              {printIngredients(store)
                 .map((ingredients, index) => (
                   <Checkboxingredient
                     key={_.uniqueId()}
@@ -92,7 +92,7 @@ export default function Inprocess() {
             style={{ position: 'fixed', bottom: 0 }}
             data-testid="finish-recipe-btn"
             type="button"
-            onClick={saveDone}
+            onClick={() => saveDone(store, history, location)}
           >
             Finalizar Receita
 

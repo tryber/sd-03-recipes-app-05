@@ -4,6 +4,7 @@ import { ProducDetailsContext } from '../contexts/ProducDetailsContext';
 import Loading from '../components/Loading';
 import Minicard from '../components/MiniCard';
 import Favcontainer from '../components/FavContainer';
+import printIngredients from '../service/utilFunctions';
 
 const _ = require('lodash');
 
@@ -13,23 +14,6 @@ export default function Productdetails() {
   const location = useLocation();
   const history = useHistory();
   const [buttonText, setButtonText] = useState('Iniciar Receita');
-
-  function printIngredients() {
-    const ingredients = Object.keys(store.productDetails).filter((product) => product.includes('strIngredient'));
-    const ingredientsList = [];
-    ingredients.every((ingredient, i) => {
-      if (store.productDetails[ingredient]) {
-        const ing = store.productDetails[ingredient];
-        const measure = store.productDetails[`strMeasure${i + 1}`];
-        const message = measure ? `- ${ing} - ${measure}` : `- ${ing}`;
-        ingredientsList.push(message);
-        return true;
-      }
-      return false;
-    });
-
-    return ingredientsList;
-  }
 
   function isDone() {
     const product = store.productDetails;
@@ -90,7 +74,7 @@ export default function Productdetails() {
           <div>
             <p>Ingredients</p>
             <div>
-              {printIngredients()
+              {printIngredients(store)
                 .map((ingredients, index) => (
                   <p
                     data-testid={`${index}-ingredient-name-and-measure`}
