@@ -35,7 +35,7 @@ export default function Telaprincipal() {
               />
             ))}
           </div>
-        <Footer />
+          <Footer />
         </div>
       )
   );
