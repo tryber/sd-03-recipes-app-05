@@ -3,6 +3,8 @@ import Gif from '../images/foodLoading.gif';
 
 export default function Loading() {
   return (
-    <img src={Gif} alt="Loading" />
+    <section className="body">
+      <img src={Gif} alt="Loading" className="img-loading" />
+    </section>
   );
 }
