@@ -10,7 +10,11 @@ export default function Card({
   const history = useHistory();
 
   function handleClick() {
-    history.push(`${history.location.pathname}/${id}`);
+    let type;
+    if (history.location.pathname.includes('comidas')) {
+      type = 'comidas';
+    } else { type = 'bebidas'; }
+    history.push(`/${type}/${id}`);
   }
 
   return (

@@ -16,9 +16,19 @@ export async function getCategoryList() {
   return category.meals.map(({ strCategory }) => strCategory);
 }
 
+export async function getAreaList() {
+  const category = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?a=list').then((r) => r.json());
+  return category.meals.map(({ strArea }) => strArea);
+}
+
 // Pega todas as refeições de uma categoria específica
 export async function filterByCategory(category) {
   const categoryReturn = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`).then((r) => r.json());
+  return categoryReturn.meals;
+}
+
+export async function filterByArea(area) {
+  const categoryReturn = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`).then((r) => r.json());
   return categoryReturn.meals;
 }
 
