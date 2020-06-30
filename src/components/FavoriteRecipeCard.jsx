@@ -37,10 +37,22 @@ function renderAria(aria) {
 
 function renderImage(index, history, type, id, image) {
   return (
-    <button
-      type="button"
-      onClick={() => moveDetails(history, type, id)}
-      className="card-thumb"
+    // <button
+    //   type="button"
+    //   onClick={() => moveDetails(history, type, id)}
+    //   className="card-thumb"
+    // >
+    //   <img
+    //     data-testid={`${index}-horizontal-image`}
+    //     src={image}
+    //     alt=""
+    //     style={{ width: 200 }}
+    //   />
+    // </button>
+    <Namebutton
+      {...{
+        index, moveDetails, history, type, id,
+      }}
     >
       <img
         data-testid={`${index}-horizontal-image`}
@@ -48,7 +60,8 @@ function renderImage(index, history, type, id, image) {
         alt=""
         style={{ width: 200 }}
       />
-    </button>
+
+    </Namebutton>
   );
 }
 
@@ -79,14 +92,18 @@ export default function FavoriteRecipeCard({ index, recipe, setRecipes }) {
         {name}
 
       </button> */}
-      <Namebutton {...{
-        name, index, moveDetails, history, type, id,
-      }}
-      />
+      <Namebutton
+        {...{
+          index, moveDetails, history, type, id,
+        }}
+      >
+        {name}
+
+      </Namebutton>
 
       <button
         type="button"
-        onClick={(e) => desFav(id, setRecipes)}
+        onClick={() => desFav(id, setRecipes)}
       >
         <img
           data-testid={`${index}-horizontal-favorite-btn`}
@@ -107,9 +124,10 @@ export default function FavoriteRecipeCard({ index, recipe, setRecipes }) {
           alt=""
         />
       </button> */}
-      <Copybutton {...{
-        copyCont, type, id, setAria, share, index,
-      }}
+      <Copybutton
+        {...{
+          copyCont, type, id, setAria, share, index,
+        }}
       />
       {renderAria(aria)}
     </div>

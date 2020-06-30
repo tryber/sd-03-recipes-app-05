@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 export default function Namebutton({
-  name, index, moveDetails, history, type, id,
+  children, index, moveDetails, history, type, id,
 }) {
   return (
     <button
@@ -11,7 +11,7 @@ export default function Namebutton({
       data-testid={`${index}-horizontal-name`}
       className="name"
     >
-      {name}
+      {children}
 
     </button>
   );
@@ -22,6 +22,6 @@ Namebutton.propTypes = {
   id: PropTypes.number.isRequired,
   index: PropTypes.number.isRequired,
   moveDetails: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
 };
