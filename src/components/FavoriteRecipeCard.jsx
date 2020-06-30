@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import share from '../images/shareIcon.svg';
 import favIcon from '../images/blackHeartIcon.svg';
+import Namebutton from './NameButton';
+import Copybutton from './CopyButton';
 
 function copyCont(type, id, setAria) {
   navigator.clipboard.writeText(`http://localhost:3000/${type}s/${id}`).then(() => {
@@ -68,7 +70,7 @@ export default function FavoriteRecipeCard({ index, recipe, setRecipes }) {
     <div>
       {renderImage(index, history, type, id, image)}
       <span data-testid={`${index}-horizontal-top-text`}>{alcoholicOrNot || `${area} - ${category}`}</span>
-      <button
+      {/* <button
         type="button"
         onClick={() => moveDetails(history, type, id)}
         data-testid={`${index}-horizontal-name`}
@@ -76,7 +78,11 @@ export default function FavoriteRecipeCard({ index, recipe, setRecipes }) {
       >
         {name}
 
-      </button>
+      </button> */}
+      <Namebutton {...{
+        name, index, moveDetails, history, type, id,
+      }}
+      />
 
       <button
         type="button"
@@ -89,7 +95,7 @@ export default function FavoriteRecipeCard({ index, recipe, setRecipes }) {
         />
       </button>
 
-      <button
+      {/* <button
         type="button"
         onClick={(e) => copyCont(type, id, setAria)}
         className="content-type"
@@ -100,7 +106,11 @@ export default function FavoriteRecipeCard({ index, recipe, setRecipes }) {
           src={share}
           alt=""
         />
-      </button>
+      </button> */}
+      <Copybutton {...{
+        copyCont, type, id, setAria, share, index,
+      }}
+      />
       {renderAria(aria)}
     </div>
   );
