@@ -125,14 +125,10 @@ export default function Productdetails() {
           <span className="body-box">{renderIngredients(store)}</span>
           <div data-testid="instructions" className="body-box">
             <p className="title-box">INSTRUCTIONS</p>
-            <span className="txt-ingredients">
-              {store.productDetails.strInstructions}
-            </span>
+            <span className="txt-ingredients">{store.productDetails.strInstructions}</span>
           </div>
           <div className="body-box">{renderYoutube(store)}</div>
-          <div className="body-box">
-            {renderRecomendations(store, page)}
-          </div>
+          <div className="body-box">{renderRecomendations(store, page)}</div>
           <button
             onClick={() => goToProgress(store, buttonText, location, history)}
             style={{ display: isDone(store) ? 'none' : 'block' }}
