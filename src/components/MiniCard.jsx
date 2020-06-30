@@ -5,15 +5,15 @@ export default function Minicard({
   index, thumb, title, category, style,
 }) {
   return (
-    <div style={style}>
+    <div style={style} className="box-recom">
       <img
         data-testid={`${index}-recomendation-card`}
-        style={{ width: 300, height: 300 }}
+        className="img-recom"
         src={thumb}
         alt=""
       />
-      <p data-testid={`${index}-recomendation-title`}>{title}</p>
-      <p>{category}</p>
+      <p className="txt-ingredients" data-testid={`${index}-recomendation-title`}>{title}</p>
+      <p className="txt-ingredients">{category}</p>
     </div>
   );
 }

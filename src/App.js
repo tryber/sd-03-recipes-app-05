@@ -1,37 +1,52 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Telaprincipal from './pages/TelaPrincipal';
+import TelaPrincipal from './pages/TelaPrincipal';
 import TPProvider from './contexts/TelaPrincipalContext';
 import Login from './pages/Login';
-import TelaPrincipal from './pages/TelaPrincipal';
 import DrinkAndMealExplorer from './components/DrinkAndMealExplorer';
+import './App.css';
 import ExplorerScreen from './components/ExplorerScreen';
 import PDProvider from './contexts/ProducDetailsContext';
 import Productdetails from './pages/ProductDetails';
 import Inprocess from './pages/InProcess';
 import Donerecipes from './pages/DoneRecipes';
 
+function renderReceitasFeitas() {
+  return (
+    <Route path="/receitas-feitas">
+      <Donerecipes />
+    </Route>
+  );
+}
+
+function renderComidas() {
+  return (
+    <Route exact path="/comidas">
+      <TPProvider>
+        <TelaPrincipal />
+      </TPProvider>
+    </Route>
+  );
+}
+function renderBebibdas() {
+  return (
+    <Route exact path="/bebidas">
+      <TPProvider>
+        <TelaPrincipal />
+      </TPProvider>
+    </Route>
+  );
+}
+
 function App() {
   return (
     <div>
       <Switch>
+        {renderReceitasFeitas()}
+        {renderComidas()}
+        {renderBebibdas()}
 
-        <Route path="/receitas-feitas">
-          <Donerecipes />
-        </Route>
-
-        <Route path="/comidas">
-          <TPProvider>
-            <TelaPrincipal />
-          </TPProvider>
-        </Route>
-
-        <Route path="/bebidas">
-          <TPProvider>
-            <TelaPrincipal />
-          </TPProvider>
-        </Route>
-        <Route path="/explorar/:type">
+        <Route exact path="/explorar/:type">
           <TPProvider>
             <DrinkAndMealExplorer />
           </TPProvider>

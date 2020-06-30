@@ -8,14 +8,22 @@ import printIngredients from '../service/utilFunctions';
 
 const _ = require('lodash');
 
+function renderId(store) {
+  return store.productDetails.idDrink || store.productDetails.idMeal;
+}
+
+function renderArea(store) {
+  return store.productDetails.strArea || '';
+}
+
 function saveDone(store, history, location) {
   const {
     strCategory, strAlcoholic, strDrink, strMeal, strDrinkThumb, strMealThumb, strTags,
   } = store.productDetails;
   const doneRecipe = {
-    id: store.productDetails.idDrink || store.productDetails.idMeal,
+    id: renderId(store),
     type: location.pathname.slice(1).split('/')[0].slice(0, 6),
-    area: store.productDetails.strArea || '',
+    area: renderArea(store),
     category: strCategory,
     alcoholicOrNot: strAlcoholic,
     name: strDrink || strMeal,

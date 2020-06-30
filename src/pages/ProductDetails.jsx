@@ -5,6 +5,7 @@ import Loading from '../components/Loading';
 import Minicard from '../components/MiniCard';
 import Favcontainer from '../components/FavContainer';
 import printIngredients from '../service/utilFunctions';
+import '../style/Details.css';
 
 const _ = require('lodash');
 
@@ -37,11 +38,12 @@ function makeButtonText(id) {
 function renderIngredients(store) {
   return (
     <div>
-      <p>Ingredients</p>
+      <p className="title-box">INGREDIENTS</p>
       <div>
         {printIngredients(store)
           .map((ingredients, index) => (
             <p
+              className="txt-ingredients"
               data-testid={`${index}-ingredient-name-and-measure`}
               key={_.uniqueId()}
             >
@@ -56,16 +58,18 @@ function renderIngredients(store) {
 function renderRecomendations(store, page) {
   return (
     <div>
-      <p>Recomendadas</p>
-      {store.recomendations.map((reco, index) => (
-        <Minicard
-          style={{ display: _.inRange(index, page, page + 2) ? 'inline' : 'none' }}
-          thumb={reco.strMealThumb || reco.strDrinkThumb}
-          title={reco.strMeal || reco.strDrink}
-          category={reco.strCategory}
-          index={index}
-        />
-      ))}
+      <p className="title-box">RECOMENDATIONS</p>
+      <div className="div-recom">
+        {store.recomendations.map((reco, index) => (
+          <Minicard
+            style={{ display: _.inRange(index, page, page + 2) ? 'inline' : 'none' }}
+            thumb={reco.strMealThumb || reco.strDrinkThumb}
+            title={reco.strMeal || reco.strDrink}
+            category={reco.strCategory}
+            index={index}
+          />
+        ))}
+      </div>
     </div>
   );
 }
@@ -73,7 +77,7 @@ function renderRecomendations(store, page) {
 function renderYoutube(store) {
   return store.productDetails.strYoutube && (
     <div className="video">
-      <p>Youtube</p>
+      <p className="title-box">YOUTUBE</p>
       <iframe
         data-testid="video"
         title="youtube Video"
@@ -86,7 +90,7 @@ function renderYoutube(store) {
 function renderImage(store) {
   return (
     <img
-      style={{ width: 400, height: 400 }}
+      className="image"
       src={store.productDetails.strMealThumb || store.productDetails.strDrinkThumb}
       alt="thumbnail"
       data-testid="recipe-photo"
@@ -111,32 +115,37 @@ export default function Productdetails() {
   return (
     _.isEmpty(store.productDetails) ? <Loading />
       : (
-        <div style={{ width: 500 }}>
+        <div className="body">
           {renderImage(store)}
-          <p data-testid="recipe-title">
+          <p data-testid="recipe-title" className="title-txt">
             {store.productDetails.strMeal || store.productDetails.strDrink}
           </p>
-          <p data-testid="recipe-category">
+          <p data-testid="recipe-category" className="category-txt">
             {store.productDetails.strAlcoholic || store.productDetails.strCategory}
           </p>
-          <Favcontainer />
-          {renderIngredients(store)}
-          <div data-testid="instructions">
-            {store.productDetails.strInstructions}
+          <span className="favs"><Favcontainer /></span>
+          <span className="body-box">{renderIngredients(store)}</span>
+          <div data-testid="instructions" className="body-box">
+            <p className="title-box">INSTRUCTIONS</p>
+            <span className="txt-ingredients">
+              {store.productDetails.strInstructions}
+            </span>
           </div>
-          {renderYoutube(store)}
-          {renderRecomendations(store, page)}
+          <div className="body-box">
+            {renderYoutube(store)}
+          </div>
+          <div className="body-box">
+            {renderRecomendations(store, page)}
+          </div>
           <button
             onClick={() => goToProgress(store, buttonText, location, history)}
-            style={{ position: 'fixed', bottom: 0, display: isDone(store) ? 'none' : 'block' }}
+            style={{ display: isDone(store) ? 'none' : 'block' }}
             data-testid="start-recipe-btn"
             type="button"
+            className="btn-continuar"
           >
             {buttonText}
-
           </button>
-          )
-
         </div>
       )
   );

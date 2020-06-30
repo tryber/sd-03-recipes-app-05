@@ -27,7 +27,6 @@ export async function getRandomDrink() {
   const randomDrink = await fetch(
     'https://www.thecocktaildb.com/api/json/v1/1/random.php',
   ).then((r) => r.json());
-
   return randomDrink.drinks[0];
 }
 
