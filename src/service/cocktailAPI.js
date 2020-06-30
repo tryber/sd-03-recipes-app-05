@@ -27,6 +27,15 @@ export async function getRandomDrink() {
   const randomDrink = await fetch(
     'https://www.thecocktaildb.com/api/json/v1/1/random.php',
   ).then((r) => r.json());
-
   return randomDrink.drinks[0];
+}
+  
+export async function getById(id) {
+  return (await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`)
+    .then((r) => r.json())).drinks[0];
+}
+
+export async function getRandom() {
+  return (await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
+    .then((r) => r.json())).drinks[0];
 }
