@@ -1,0 +1,11 @@
+.footer {
+  background-color: rgb(255, 123, 0);
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 40px;
+}
+
+.icon {
+  filter: invert(100%);
+  width: 70%;
+}
