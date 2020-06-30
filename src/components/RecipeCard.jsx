@@ -34,11 +34,9 @@ function renderAria(aria) {
 
 function renderImage(index, history, type, id, image) {
   return (
-    <div
-      role="button"
-      onKeyPress={() => { moveToDetails(history, type, id); }}
+    <button
+      type="button"
       onClick={() => moveToDetails(history, type, id)}
-      tabIndex={0}
     >
       <img
         data-testid={`${index}-horizontal-image`}
@@ -46,7 +44,7 @@ function renderImage(index, history, type, id, image) {
         alt=""
         style={{ width: 200 }}
       />
-    </div>
+    </button>
   );
 }
 
