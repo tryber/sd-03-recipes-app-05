@@ -80,7 +80,7 @@ export default function FavoriteRecipeCard({ index, recipe, setRecipes }) {
 
       <button
         type="button"
-        onClick={() => desFav(id, setRecipes)}
+        onClick={(e) => desFav(id, setRecipes)}
       >
         <img
           data-testid={`${index}-horizontal-favorite-btn`}
@@ -91,7 +91,7 @@ export default function FavoriteRecipeCard({ index, recipe, setRecipes }) {
 
       <button
         type="button"
-        onClick={() => copyCont(type, id, setAria)}
+        onClick={(e) => copyCont(type, id, setAria)}
         className="content-type"
       >
         <img
