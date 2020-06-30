@@ -9,11 +9,16 @@ import ExplorerScreen from './components/ExplorerScreen';
 import PDProvider from './contexts/ProducDetailsContext';
 import Productdetails from './pages/ProductDetails';
 import Inprocess from './pages/InProcess';
+import Donerecipes from './pages/DoneRecipes';
 
 function App() {
   return (
     <div>
       <Switch>
+
+        <Route path="/receitas-feitas">
+          <Donerecipes />
+        </Route>
 
         <Route exact path="/comidas">
           <TPProvider>
