@@ -72,6 +72,7 @@ export default function FavoriteRecipeCard({ index, recipe, setRecipes }) {
         type="button"
         onClick={() => moveToDetails(history, type, id)}
         data-testid={`${index}-horizontal-name`}
+        className="name"
       >
         {name}
 
@@ -91,6 +92,7 @@ export default function FavoriteRecipeCard({ index, recipe, setRecipes }) {
       <button
         type="button"
         onClick={() => copyContent(type, id, setAria)}
+        className="content-type"
       >
         <img
           data-testid={`${index}-horizontal-share-btn`}

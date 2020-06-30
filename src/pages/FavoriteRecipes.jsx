@@ -25,7 +25,7 @@ export default function FavoriteRecipes() {
 
   return (
     <div>
-      <div className="filter-container">
+      <div className="filter-container-favorite">
         <Filtertag
           setFilter={setFilter}
           datatest="filter-by-all-btn"
