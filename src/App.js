@@ -7,6 +7,7 @@ import PDProvider from './contexts/ProducDetailsContext';
 import Productdetails from './pages/ProductDetails';
 import Inprocess from './pages/InProcess';
 import Donerecipes from './pages/DoneRecipes';
+import FavoriteRecipes from './pages/FavoriteRecipes';
 
 function App() {
   return (
@@ -15,6 +16,12 @@ function App() {
 
         <Route path="/receitas-feitas">
           <Donerecipes />
+        </Route>
+
+        <Route path="/receitas-favoritas">
+          <PDProvider>
+            <FavoriteRecipes />
+          </PDProvider>
         </Route>
 
         <Route exact path="/comidas">
