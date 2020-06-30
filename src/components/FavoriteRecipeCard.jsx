@@ -4,14 +4,14 @@ import { useHistory } from 'react-router-dom';
 import share from '../images/shareIcon.svg';
 import favIcon from '../images/blackHeartIcon.svg';
 
-function copyContent(type, id, setAria) {
+function copyCont(type, id, setAria) {
   navigator.clipboard.writeText(`http://localhost:3000/${type}s/${id}`).then(() => {
     setAria(true);
     setTimeout(() => setAria(false), 2001);
   });
 }
 
-function moveToDetails(history, type, id) {
+function moveDetails(history, type, id) {
   history.push(`/${type}s/${id}`);
 }
 
@@ -37,7 +37,7 @@ function renderImage(index, history, type, id, image) {
   return (
     <button
       type="button"
-      onClick={() => moveToDetails(history, type, id)}
+      onClick={() => moveDetails(history, type, id)}
       className="card-thumb"
     >
       <img
@@ -67,10 +67,10 @@ export default function FavoriteRecipeCard({ index, recipe, setRecipes }) {
   return (
     <div>
       {renderImage(index, history, type, id, image)}
-      <p data-testid={`${index}-horizontal-top-text`}>{alcoholicOrNot || `${area} - ${category}`}</p>
+      <span data-testid={`${index}-horizontal-top-text`}>{alcoholicOrNot || `${area} - ${category}`}</span>
       <button
         type="button"
-        onClick={() => moveToDetails(history, type, id)}
+        onClick={() => moveDetails(history, type, id)}
         data-testid={`${index}-horizontal-name`}
         className="name"
       >
@@ -91,7 +91,7 @@ export default function FavoriteRecipeCard({ index, recipe, setRecipes }) {
 
       <button
         type="button"
-        onClick={() => copyContent(type, id, setAria)}
+        onClick={() => copyCont(type, id, setAria)}
         className="content-type"
       >
         <img
