@@ -49,14 +49,14 @@ function renderImage(index, history, type, id, image) {
   );
 }
 
-function desFav(recipeId, rerender) {
+function desFav(recipeId, setRecipes) {
   const recipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
   const filteredRecipes = recipes.filter(({ id }) => id !== recipeId);
   localStorage.setItem('favoriteRecipes', JSON.stringify(filteredRecipes));
-  rerender();
+  setRecipes(filteredRecipes);
 }
 
-export default function FavoriteRecipeCard({ index, recipe, rerender }) {
+export default function FavoriteRecipeCard({ index, recipe, setRecipes }) {
   const {
     image, tags, name, doneDate, type, alcoholicOrNot, area, category, id,
   } = recipe;
@@ -78,7 +78,7 @@ export default function FavoriteRecipeCard({ index, recipe, rerender }) {
 
       <button
         type="button"
-        onClick={() => desFav(id, rerender)}
+        onClick={() => desFav(id, setRecipes)}
       >
         <img
           data-testid={`${index}-horizontal-favorite-btn`}
@@ -106,5 +106,5 @@ export default function FavoriteRecipeCard({ index, recipe, rerender }) {
 FavoriteRecipeCard.propTypes = {
   index: PropTypes.number.isRequired,
   recipe: PropTypes.objectOf(PropTypes.any).isRequired,
-  rerender: PropTypes.func.isRequired,
+  setRecipes: PropTypes.func.isRequired,
 };

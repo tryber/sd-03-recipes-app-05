@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Filtertag from '../components/FilterTag';
 import FavoriteRecipeCard from '../components/FavoriteRecipeCard';
 
@@ -14,11 +14,14 @@ function filterType(filter) {
 
 export default function FavoriteRecipes() {
   const [filter, setFilter] = useState('All');
-  const rerender = useState(false)[1];
-  let recipes = [];
-  try {
-    recipes = JSON.parse(localStorage.getItem('favoriteRecipes')).filter(filterType(filter));
-  } catch (e) { recipes = []; }
+  const [recipes, setRecipes] = useState([]);
+  const filteredRecipes = recipes.filter(filterType(filter));
+
+  useEffect(() => {
+    try {
+      setRecipes(JSON.parse(localStorage.getItem('favoriteRecipes')));
+    } catch (e) { setRecipes([]); }
+  }, []);
 
   return (
     <div>
@@ -47,7 +50,14 @@ export default function FavoriteRecipes() {
       </div>
       <div>
         {recipes.length === 0 && 'Não há receitas favoritadas'}
-        {recipes.map((recipe, index) => <FavoriteRecipeCard rerender={rerender} recipe={recipe} index={index} />)}
+        {filteredRecipes
+          .map((recipe, index) => (
+            <FavoriteRecipeCard
+              setRecipes={setRecipes}
+              recipe={recipe}
+              index={index}
+            />
+          ))}
       </div>
     </div>
   );
