@@ -7,7 +7,7 @@ import favIcon from '../images/blackHeartIcon.svg';
 function copyContent(type, id, setAria) {
   navigator.clipboard.writeText(`http://localhost:3000/${type}s/${id}`).then(() => {
     setAria(true);
-    setTimeout(() => setAria(false), 2000);
+    setTimeout(() => setAria(false), 2001);
   });
 }
 
@@ -38,6 +38,7 @@ function renderImage(index, history, type, id, image) {
     <button
       type="button"
       onClick={() => moveToDetails(history, type, id)}
+      className="card-thumb"
     >
       <img
         data-testid={`${index}-horizontal-image`}
@@ -58,7 +59,7 @@ function desFav(recipeId, setRecipes) {
 
 export default function FavoriteRecipeCard({ index, recipe, setRecipes }) {
   const {
-    image, tags, name, doneDate, type, alcoholicOrNot, area, category, id,
+    image, name, type, alcoholicOrNot, area, category, id,
   } = recipe;
   const [aria, setAria] = useState(false);
   const history = useHistory();
