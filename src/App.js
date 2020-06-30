@@ -1,9 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Telaprincipal from './pages/TelaPrincipal';
+import TelaPrincipal from './pages/TelaPrincipal';
 import TPProvider from './contexts/TelaPrincipalContext';
 import Login from './pages/Login';
-import Telaprincipal from './pages/TelaPrincipal';
 import DrinkAndMealExplorer from './components/DrinkAndMealExplorer';
 import './App.css';
 import ExplorerScreen from './components/ExplorerScreen';
@@ -18,13 +17,13 @@ function App() {
 
         <Route exact path="/comidas">
           <TPProvider>
-            <Telaprincipal />
+            <TelaPrincipal />
           </TPProvider>
         </Route>
 
         <Route exact path="/bebidas">
           <TPProvider>
-            <Telaprincipal />
+            <TelaPrincipal />
           </TPProvider>
         </Route>
         <Route exact path="/explorar/:type">
