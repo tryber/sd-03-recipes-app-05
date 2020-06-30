@@ -8,7 +8,7 @@
 }
 
 .image {
-  border-radius: 0px 0px 20px 20px;
+  border-radius: 0 0 20px 20px;
   height: 250px;
   width: 360px;
 }
@@ -22,11 +22,11 @@
 .category-txt {
   color: orangered;
   font-size: 14px;
-  margin: -20px 0px 20px 20px;
+  margin: -20px 0 20px 20px;
 }
 
 .favs {
-  margin: -60px 0px 20px 260px;
+  margin: -60px 0 20px 260px;
 }
 
 .title-box {
@@ -45,7 +45,7 @@
   border-radius: 10px;
   box-shadow: 0 1px 1px 0 rgba(238, 229, 198, 0.63);
   margin-top: 10px;
-  padding: 0px 20px 10px;
+  padding: 0 20px 10px;
 }
 
 .div-recom {
@@ -61,20 +61,20 @@
 
 .box-recom {
   background-color: white;
-  border-radius: 10px;
   border: 1px solid orangered;
+  border-radius: 10px;
   margin-left: 10px;
 }
 
 .btn-continuar {
   background-color: rgb(103, 4, 170);
-  border-radius: 10px;
   border: 0;
+  border-radius: 10px;
   box-shadow: 0 1px 1px 0 rgba(64, 6, 75, 0.835);
   color: white;
   font-size: 16px;
   font-weight: 600;
-  margin-top:10px;
+  margin-top: 10px;
   padding: 15px 80px;
   width: 100%;
 }

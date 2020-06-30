@@ -104,14 +104,12 @@ export default function Productdetails() {
   const location = useLocation();
   const history = useHistory();
   const [buttonText, setButtonText] = useState('Iniciar receita');
-
   useEffect(() => {
     const [type, id] = location.pathname.slice(1).split('/');
     store.getRecomendations(type);
     store.getProductDetails(type, id);
     setButtonText(makeButtonText(id));
   }, []);
-
   return (
     _.isEmpty(store.productDetails) ? <Loading />
       : (
@@ -131,9 +129,7 @@ export default function Productdetails() {
               {store.productDetails.strInstructions}
             </span>
           </div>
-          <div className="body-box">
-            {renderYoutube(store)}
-          </div>
+          <div className="body-box">{renderYoutube(store)}</div>
           <div className="body-box">
             {renderRecomendations(store, page)}
           </div>
