@@ -4,6 +4,7 @@ import Telaprincipal from './pages/TelaPrincipal';
 import TPProvider from './contexts/TelaPrincipalContext';
 import Login from './pages/Login';
 import './App.css';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         </TPProvider>
       </Route>
     </div>
+    <Footer />
   );
 }
 
