@@ -7,9 +7,15 @@ import DrinkAndMealExplorer from './components/DrinkAndMealExplorer';
 import './App.css';
 import ExplorerScreen from './components/ExplorerScreen';
 import PDProvider from './contexts/ProducDetailsContext';
+import OEProvider from './contexts/OrigemExplorerContext';
 import Productdetails from './pages/ProductDetails';
 import Inprocess from './pages/InProcess';
 import Donerecipes from './pages/DoneRecipes';
+import FavoriteRecipes from './pages/FavoriteRecipes';
+import OrigemExplorer from './pages/OrigemExplorer';
+import ExplorarIngredients from './pages/ExplorarIngredients';
+
+
 
 function renderReceitasFeitas() {
   return (
@@ -38,6 +44,7 @@ function renderBebibdas() {
   );
 }
 
+
 function App() {
   return (
     <div>
@@ -45,6 +52,13 @@ function App() {
         {renderReceitasFeitas()}
         {renderComidas()}
         {renderBebibdas()}
+        <Route path="/explorar/bebidas/ingredientes">
+          <ExplorarIngredients />
+        </Route>
+
+        <Route path="/explorar/comidas/ingredientes">
+          <ExplorarIngredients />
+        </Route>
 
         <Route exact path="/explorar/:type">
           <TPProvider>
@@ -61,6 +75,40 @@ function App() {
             <Login />
           </TPProvider>
         </Route>
+
+
+
+        <Route path="/explorar/comidas/area">
+          <OEProvider>
+            <OrigemExplorer />
+          </OEProvider>
+        </Route>
+
+        <Route path="/explorar/bebidas/area">
+          <p>Not Found</p>
+        </Route>
+{/* 
+        <Route path="/receitas-feitas">
+          <Donerecipes />
+        </Route> */}
+
+        <Route path="/receitas-favoritas">
+          <PDProvider>
+            <FavoriteRecipes />
+          </PDProvider>
+        </Route>
+
+        {/* <Route exact path="/comidas">
+          <TPProvider>
+            <Telaprincipal />
+          </TPProvider>
+        </Route>
+
+        <Route exact path="/bebidas">
+          <TPProvider>
+            <Telaprincipal />
+          </TPProvider>
+        </Route> */}
 
         <Route path="/comidas/:id/in-progress">
           <PDProvider>
@@ -84,6 +132,24 @@ function App() {
           <PDProvider>
             <Productdetails />
           </PDProvider>
+        </Route>
+
+        <Route exact path="/explorar/:type">
+          <TPProvider>
+            <DrinkAndMealExplorer />
+          </TPProvider>
+        </Route>
+
+        <Route exact path="/explorar/">
+          <TPProvider>
+            <ExplorerScreen />
+          </TPProvider>
+        </Route>
+
+        <Route exact path="/">
+          <TPProvider>
+            <Login />
+          </TPProvider>
         </Route>
 
       </Switch>

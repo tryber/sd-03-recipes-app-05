@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { getRandomDrink } from '../service/cocktailAPI';
 import { getRandomMeal } from '../service/mealAPI';
-import FoodLoading from '../components/Loading';
+import FoodLoading from './Loading';
 import Footer from './Footer';
 import '../style/Explorer-com-beb.css';
 

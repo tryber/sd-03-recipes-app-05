@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
-// import { ProducDetailsContext } from '../contexts/ProducDetailsContext';
+import React, { useState, useContext } from 'react';
+import { ProducDetailsContext } from '../contexts/ProducDetailsContext';
 
 const _ = require('lodash');
 
-function check(recipeId, index, checked, setChecked) {
+function check(recipeId, index, checked, setChecked, store) {
   let recipe;
   let inProgress;
   try {
@@ -20,7 +20,7 @@ function check(recipeId, index, checked, setChecked) {
     recipe.push(index);
   }
   localStorage.setItem('inProgressRecipes', JSON.stringify({ ...inProgress, [recipeId]: recipe }));
-  // store.setRecipes({ ...inProgress, [recipeId]: recipe });
+  store.setRecipes({ ...inProgress, [recipeId]: recipe });
   setChecked(!checked);
 }
 
@@ -34,7 +34,7 @@ export default function Checkboxingredient({ index, children, recipeId }) {
     }
   }
   const [checked, setChecked] = useState(setCheckState());
-  // const store = useContext(ProducDetailsContext);
+  const store = useContext(ProducDetailsContext);
 
   return (
     <div
@@ -43,7 +43,7 @@ export default function Checkboxingredient({ index, children, recipeId }) {
     >
       <input
         checked={checked}
-        onChange={() => check(recipeId, index, checked, setChecked)}
+        onChange={() => check(recipeId, index, checked, setChecked, store)}
         type="checkbox"
         name="ingredient"
         id="ingredient"

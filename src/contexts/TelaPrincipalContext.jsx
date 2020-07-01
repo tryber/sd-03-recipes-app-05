@@ -1,7 +1,11 @@
 import PropTypes from 'prop-types';
 import React, { createContext, useState } from 'react';
-import { getByName, getCategoryList, filterByCategory } from '../service/mealAPI';
-import { getByName as getCocktails, getCategoryList as getDrinkCategory, filterByCategory as filterDrink } from '../service/cocktailAPI';
+import {
+  getByName, getCategoryList, filterByCategory, filterByIngredient,
+} from '../service/mealAPI';
+import {
+  getByName as getCocktails, filterByIngredient as ingredientFetch, getCategoryList as getDrinkCategory, filterByCategory as filterDrink,
+} from '../service/cocktailAPI';
 
 export const TelaPrincipalContext = createContext(null);
 
@@ -32,14 +36,28 @@ async function changeFilteredFetch(filterToUse, type) {
   return undefined;
 }
 
+async function changeIngredientFetch(filterToUse, type) {
+  if (type === 'comidas') {
+    return (await filterByIngredient(filterToUse)).slice(0, 12);
+  } if (type === 'bebidas') {
+    return (await ingredientFetch(filterToUse)).slice(0, 12);
+  }
+  return undefined;
+}
+
 const Provider = ({ children }) => {
   const [content, setContent] = useState([]);
   const [categories, setCategories] = useState([]);
   const [filter, setFilter] = useState('All');
 
-  async function getContent(type) {
+  async function getContent(type, filterTouse) {
     setContent([]);
-    setContent(await changeContentFetch(type));
+    if (!filterTouse) {
+      setContent(await changeContentFetch(type));
+    } else {
+      setContent(await changeIngredientFetch(filterTouse, type));
+    }
+
     setFilter('All');
   }
 
@@ -60,6 +78,7 @@ const Provider = ({ children }) => {
     getContent,
     getCategories,
     getFilteredResults,
+    setFilter,
 
   };
 
