@@ -44,6 +44,7 @@ export async function getIngredientThumb(name, size = 'Small') {
 export async function filterByIngredient(ingredient) {
   return (await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`)
     .then((r) => r.json())).drinks;
+}
 // Pega um drink aleatório
 export async function getRandomDrink() {
   const randomDrink = await fetch(
