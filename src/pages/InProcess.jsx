@@ -5,6 +5,7 @@ import Loading from '../components/Loading';
 import Checkboxingredient from '../components/CheckBoxIngredient';
 import Favcontainer from '../components/FavContainer';
 import printIngredients from '../service/utilFunctions';
+import '../style/Inprocess.css';
 
 const _ = require('lodash');
 
@@ -45,7 +46,7 @@ function saveDone(store, history, location) {
 function renderIngredients(store, location) {
   return (
     <div>
-      <p>Ingredients</p>
+      <p className="title-box">INGREDIENTS</p>
       <div>
         {printIngredients(store)
           .map((ingredients, index) => (
@@ -66,7 +67,7 @@ function renderIngredients(store, location) {
 function renderImage(store) {
   return (
     <img
-      style={{ width: 399, height: 299 }}
+      className="image"
       src={store.productDetails.strMealThumb || store.productDetails.strDrinkThumb}
       alt="thumbnail"
       data-testid="recipe-photo"
@@ -97,22 +98,24 @@ export default function Inprocess() {
   return (
     _.isEmpty(store.productDetails) ? <Loading />
       : (
-        <div style={{ width: 500 }}>
+        <div className="body">
           {renderImage(store)}
-          <p data-testid="recipe-title">
+          <p className="title-txt" data-testid="recipe-title">
             {store.productDetails.strMeal || store.productDetails.strDrink}
           </p>
-          <p data-testid="recipe-category">
+          <p className="category-txt" data-testid="recipe-category">
             {store.productDetails.strAlcoholic || store.productDetails.strCategory}
           </p>
-          <Favcontainer />
-          {renderIngredients(store, location)}
-          <div data-testid="instructions">
-            {store.productDetails.strInstructions}
+          <span className="favs"><Favcontainer /></span>
+          <span className="body-box">
+            <p className="txt-ingredients">{renderIngredients(store, location)}</p>
+          </span>
+          <div data-testid="instructions" className="body-box">
+            <p className="title-box">INSTRUCTIONS</p>
+            <p className="txt-ingredients">{store.productDetails.strInstructions}</p>
           </div>
-
           <button
-            style={{ position: 'fixed', bottom: 0 }}
+            className="btn-finalizar"
             data-testid="finish-recipe-btn"
             type="button"
             onClick={() => saveDone(store, history, location)}
@@ -120,7 +123,6 @@ export default function Inprocess() {
           >
             Finalizar Receita
           </button>
-
         </div>
       )
   );

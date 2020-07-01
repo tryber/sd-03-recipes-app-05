@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Filtertag from '../components/FilterTag';
 import RecipeCard from '../components/RecipeCard';
+import '../style/Done-recipes.css';
 
 function filterType(filter) {
   if (filter === 'All') {
@@ -16,8 +17,8 @@ export default function Donerecipes() {
   const [filter, setFilter] = useState('All');
   const recipes = JSON.parse(localStorage.getItem('doneRecipes')).filter(filterType(filter));
   return (
-    <div>
-      <div className="filter-container">
+    <div className="body1">
+      <div className="menu">
         <Filtertag
           setFilter={setFilter}
           datatest="filter-by-all-btn"

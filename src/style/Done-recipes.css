@@ -1,0 +1,113 @@
+.body1 {
+  background-color: #ffe5d9;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 640px;
+  width: 360px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20px;
+  width: 95%;
+}
+
+.sub-menu {
+  background-color: white;
+  border: 1px solid orangered;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px 0 rgba(236, 220, 177, 0.589);
+  color: rgb(53, 7, 97);
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 20px;
+  padding: 10px 32px;
+}
+
+.sub-menu:hover {
+  background-color: orangered;
+  color: white;
+}
+
+.container-receita {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 2px 0 rgba(199, 194, 181, 0.589);
+  display: flex;
+  flex-direction: row;
+  height: 170px;
+  margin: 20px 0 0 13px;
+  width: 330px;
+}
+
+.container-right {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.img-box {
+  border-radius: 10px;
+  cursor: pointer;
+  height: 160px;
+  width: 150px;
+}
+
+.btn-image {
+  background-color: white;
+  border: 0;
+  border-radius: 10px;
+}
+
+.category-text {
+  color: orangered;
+  font-size: 13px;
+  margin-left: 5px;
+}
+
+.btn-title {
+  background-color: white;
+  border: 0;
+  color: rgb(42, 9, 73);
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.txt-date {
+  color: rgb(148, 136, 113);
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.tag-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.tags {
+  background-color: rgb(223, 219, 16);
+  border-radius: 30px;
+  font-size: 12px;
+  margin-left: 5px;
+  padding: 4px 8px;
+}
+
+.btn-share {
+  background-color: white;
+  border: 0;
+}
+
+.img-share {
+  cursor: pointer;
+  height: 30px;
+  width: 18px;
+}
+
+.box-title {
+  display: flex;
+  flex-direction: row;
+}

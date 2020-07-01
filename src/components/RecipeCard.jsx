@@ -20,7 +20,7 @@ function renderAria(aria) {
       style={{
         position: 'fixed',
         top: 10,
-        right: '50%',
+        left: '50%',
         backgroundColor: 'rgba(0,0,0,0.6)',
         padding: '4px 8px',
         color: 'white',
@@ -37,12 +37,13 @@ function renderImage(index, history, type, id, image) {
     <button
       type="button"
       onClick={() => moveToDetails(history, type, id)}
+      className="btn-image"
     >
       <img
         data-testid={`${index}-horizontal-image`}
         src={image}
         alt=""
-        style={{ width: 200 }}
+        className="img-box"
       />
     </button>
   );
@@ -56,36 +57,40 @@ export default function Recipecard({ index, recipe }) {
   const history = useHistory();
 
   return (
-    <div>
+    <div className="container-receita">
       {renderImage(index, history, type, id, image)}
-      <p data-testid={`${index}-horizontal-top-text`}>{alcoholicOrNot || `${area} - ${category}`}</p>
-      <button
-        type="button"
-        onClick={() => moveToDetails(history, type, id)}
-        data-testid={`${index}-horizontal-name`}
-      >
-        {name}
+      <div className="container-right">
+        <div className="box-title">
+          <p className="category-text" data-testid={`${index}-horizontal-top-text`}>{alcoholicOrNot || `${area} - ${category}`}</p>
+          <button
+            className="btn-share"
+            type="button"
+            onClick={() => copyContent(type, id, setAria)}
+          >
+            <img
+              data-testid={`${index}-horizontal-share-btn`}
+              className="img-share"
+              src={share}
+              alt=""
+            />
+          </button>
+        </div>
+        <button
+          className="btn-title"
+          type="button"
+          onClick={() => moveToDetails(history, type, id)}
+          data-testid={`${index}-horizontal-name`}
+        >
+          {name}
+        </button>
+        <p className="txt-date" data-testid={`${index}-horizontal-done-date`}>{`Feita em: ${doneDate}`}</p>
 
-      </button>
-      <p data-testid={`${index}-horizontal-done-date`}>{`feito em:${doneDate}`}</p>
-
-      <div className="tag-container">
-        {tags.slice(0, 2)
-          .map((tagName) => <p data-testid={`${index}-${tagName}-horizontal-tag`}>{tagName}</p>)}
+        <div className="tag-container">
+          {tags.slice(0, 2)
+            .map((tagName) => <p className="tags" data-testid={`${index}-${tagName}-horizontal-tag`}>{tagName}</p>)}
+        </div>
+        {renderAria(aria)}
       </div>
-
-      <button
-        type="button"
-        onClick={() => copyContent(type, id, setAria)}
-      >
-        <img
-          data-testid={`${index}-horizontal-share-btn`}
-          style={{ cursor: 'pointer' }}
-          src={share}
-          alt=""
-        />
-      </button>
-      {renderAria(aria)}
     </div>
   );
 }

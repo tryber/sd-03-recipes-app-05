@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function Filtertag({ children, datatest, setFilter }) {
   return (
-    <button type="button" onClick={() => setFilter(children)} data-testid={datatest}>
+    <button type="button" onClick={() => setFilter(children)} data-testid={datatest} className="sub-menu">
       <span>{children}</span>
     </button>
   );
