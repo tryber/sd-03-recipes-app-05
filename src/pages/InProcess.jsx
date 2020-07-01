@@ -81,12 +81,10 @@ export default function Inprocess() {
   const history = useHistory();
   const [type, id] = location.pathname.slice(1).split('/');
   const [done, setDone] = useState(false);
-
   useEffect(() => {
     store.getProductDetails(type, id);
     store.getRecomendations(type);
   }, []);
-
   useEffect(() => {
     try {
       setDone(printIngredients(store).length === JSON.parse(localStorage.getItem('inProgressRecipes'))[id].length);
@@ -94,7 +92,6 @@ export default function Inprocess() {
       setDone(false);
     }
   });
-
   return (
     _.isEmpty(store.productDetails) ? <Loading />
       : (
@@ -120,9 +117,7 @@ export default function Inprocess() {
             type="button"
             onClick={() => saveDone(store, history, location)}
             disabled={done}
-          >
-            Finalizar Receita
-          </button>
+          >Finalizar Receita</button>
         </div>
       )
   );
