@@ -2,6 +2,9 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Telaprincipal from './pages/TelaPrincipal';
 import TPProvider from './contexts/TelaPrincipalContext';
+import Login from './pages/Login';
+import Telaprincipal from './pages/TelaPrincipal';
+import DrinkAndMealExplorer from './components/DrinkAndMealExplorer';
 import './App.css';
 import PDProvider from './contexts/ProducDetailsContext';
 import OEProvider from './contexts/OrigemExplorerContext';
@@ -11,6 +14,7 @@ import Donerecipes from './pages/DoneRecipes';
 import FavoriteRecipes from './pages/FavoriteRecipes';
 import OrigemExplorer from './pages/OrigemExplorer';
 import ExplorarIngredients from './pages/ExplorarIngredients';
+import ExplorerScreen from './components/ExplorerScreen';
 
 function App() {
   return (
@@ -81,6 +85,24 @@ function App() {
           </PDProvider>
         </Route>
 
+        <Route exact path="/explorar/:type">
+          <TPProvider>
+            <DrinkAndMealExplorer />
+          </TPProvider>
+        </Route>
+      
+        <Route exact path="/explorar/">
+          <TPProvider>
+            <ExplorerScreen />
+          </TPProvider>
+        </Route>
+      
+        <Route exact path="/">
+          <TPProvider>
+            <Login />
+          </TPProvider>
+        </Route>
+      
       </Switch>
     </div>
   );
