@@ -41,3 +41,17 @@ export async function getRandom() {
   return (await fetch('https://www.themealdb.com/api/json/v1/1/random.php')
     .then((r) => r.json())).meals[0];
 }
+
+export async function getIngredientList() {
+  return (await fetch('https://www.themealdb.com/api/json/v1/1/list.php?i=list')
+    .then((r) => r.json())).meals.map(({ strIngredient }) => strIngredient);
+}
+
+export async function getIngredientThumb(name) {
+  return (await fetch(`https://www.themealdb.com/images/ingredients/${name}-small.png`)).url;
+}
+
+export async function filterByIngredient(ingredient) {
+  return (await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`)
+    .then((r) => r.json())).meals;
+}

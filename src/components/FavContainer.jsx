@@ -72,7 +72,7 @@ function renderImage(location, setAria) {
   );
 }
 
-export default function Favcontainer(dataTest = 'favorite-btn') {
+export default function Favcontainer({ dataTest = 'favorite-btn' }) {
   const location = useLocation();
   const [aria, setAria] = useState(false);
   const [fav, setFav] = useState(false);

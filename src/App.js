@@ -10,16 +10,27 @@ import Inprocess from './pages/InProcess';
 import Donerecipes from './pages/DoneRecipes';
 import FavoriteRecipes from './pages/FavoriteRecipes';
 import OrigemExplorer from './pages/OrigemExplorer';
+import ExplorarIngredients from './pages/ExplorarIngredients';
 
 function App() {
   return (
     <div>
       <Switch>
+
+        <Route path="/explorar/bebidas/ingredientes">
+          <ExplorarIngredients />
+        </Route>
+
+        <Route path="/explorar/comidas/ingredientes">
+          <ExplorarIngredients />
+        </Route>
+
         <Route path="/explorar/comidas/area">
           <OEProvider>
             <OrigemExplorer />
           </OEProvider>
         </Route>
+
         <Route path="/explorar/bebidas/area">
           <p>Not Found</p>
         </Route>

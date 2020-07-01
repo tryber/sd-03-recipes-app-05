@@ -25,3 +25,17 @@ export async function getRandom() {
   return (await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
     .then((r) => r.json())).drinks[0];
 }
+
+export async function getIngredientList() {
+  return (await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list')
+    .then((r) => r.json())).drinks.map(({ strIngredient1 }) => strIngredient1);
+}
+
+export async function getIngredientThumb(name, size = 'Small') {
+  return (await fetch(`https://www.thecocktaildb.com/images/ingredients/${name}-${size}.png`)).url;
+}
+
+export async function filterByIngredient(ingredient) {
+  return (await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`)
+    .then((r) => r.json())).drinks;
+}

@@ -10,7 +10,13 @@ export default function Telaprincipal() {
   const location = useLocation();
 
   useEffect(() => {
-    store.getContent(location.pathname.slice(1));
+    let filter;
+    try {
+      filter = location.state.filter;
+      store.getContent(location.pathname.slice(1), filter);
+    } catch (e) {
+      store.getContent(location.pathname.slice(1));
+    }
     store.getCategories(location.pathname.slice(1));
   }, []);
   return (
