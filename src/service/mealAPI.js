@@ -35,9 +35,7 @@ export async function filterByCategory(category) {
 
 // Pega uma comida aleatória
 export async function getRandomMeal() {
-  const randomMeal = await fetch('https://www.themealdb.com/api/json/v1/1/random.php').then((r) =>
-    r.json(),
-  );
+  const randomMeal = await fetch('https://www.themealdb.com/api/json/v1/1/random.php').then((r) => r.json());
 
   return randomMeal.meals[0];
 }
@@ -70,4 +68,3 @@ export async function filterByIngredient(ingredient) {
   return (await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`)
     .then((r) => r.json())).meals;
 }
-

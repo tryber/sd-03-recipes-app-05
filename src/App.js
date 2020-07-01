@@ -15,8 +15,6 @@ import FavoriteRecipes from './pages/FavoriteRecipes';
 import OrigemExplorer from './pages/OrigemExplorer';
 import ExplorarIngredients from './pages/ExplorarIngredients';
 
-
-
 function renderReceitasFeitas() {
   return (
     <Route path="/receitas-feitas">
@@ -43,7 +41,6 @@ function renderBebibdas() {
     </Route>
   );
 }
-
 
 function App() {
   return (
@@ -76,8 +73,6 @@ function App() {
           </TPProvider>
         </Route>
 
-
-
         <Route path="/explorar/comidas/area">
           <OEProvider>
             <OrigemExplorer />
@@ -87,7 +82,7 @@ function App() {
         <Route path="/explorar/bebidas/area">
           <p>Not Found</p>
         </Route>
-{/* 
+        {/*
         <Route path="/receitas-feitas">
           <Donerecipes />
         </Route> */}
