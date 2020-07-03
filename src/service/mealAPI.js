@@ -22,3 +22,16 @@ export async function filterByCategory(category) {
 
   return categoryReturn.meals;
 }
+
+// Pega todas as refeições de um ingrediente específico
+export async function filterByIngredient(ingredient) {
+  const ingredientReturn = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`).then((r) => r.json());
+  return ingredientReturn.meals;
+}
+
+// Pega todas as refeições de uma letra específico
+export async function filterByFirst(first) {
+  const firstReturn = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${first}`).then((r) => r.json());
+  return firstReturn.meals;
+}
+
