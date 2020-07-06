@@ -95,8 +95,7 @@ export default function Inprocess() {
   return (
     _.isEmpty(store.productDetails) ? <Loading />
       : (
-        <div className="body">
-          {renderImage(store)}
+        <div className="body"> {renderImage(store)}
           <p className="title-txt" data-testid="recipe-title">
             {store.productDetails.strMeal || store.productDetails.strDrink}
           </p>
@@ -119,7 +118,6 @@ export default function Inprocess() {
             disabled={!done}
           >
             Finalizar Receita
-
           </button>
         </div>
       )
