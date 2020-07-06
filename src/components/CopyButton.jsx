@@ -8,13 +8,14 @@ export default function Copybutton({
     <button
       type="button"
       onClick={() => copyCont(type, id, setAria)}
-      className="content-type"
+      className="btn-icon-fav"
     >
       <img
         data-testid={`${index}-horizontal-share-btn`}
         style={{ cursor: 'pointer' }}
         src={share}
         alt=""
+        className="img-icon-fav"
       />
     </button>
   );

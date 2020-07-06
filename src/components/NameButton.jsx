@@ -9,7 +9,7 @@ export default function Namebutton({
       type="button"
       onClick={() => moveDetails(history, type, id)}
       data-testid={`${index}-horizontal-name`}
-      className="name"
+      className="btn-title-fav"
     >
       {children}
 

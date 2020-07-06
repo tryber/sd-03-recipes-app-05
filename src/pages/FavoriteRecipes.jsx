@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Filtertag from '../components/FilterTag';
 import FavoriteRecipeCard from '../components/FavoriteRecipeCard';
 import Header from '../components/Header';
+import '../style/Favorite.css';
 
 function filterType(filter) {
   if (filter === 'All') {
@@ -25,9 +26,9 @@ export default function FavoriteRecipes() {
   }, []);
 
   return (
-    <div>
+    <div className="body-fav">
       <Header title="Receitas Favoritas" />
-      <div className="filter-container-favorite">
+      <div className="menu">
         <Filtertag
           setFilter={setFilter}
           datatest="filter-by-all-btn"

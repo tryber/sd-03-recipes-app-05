@@ -40,6 +40,7 @@ function SerachBar() {
         type="text"
         placeholder="Buscar receita"
         data-testid="search-input"
+        className="input-search"
         // value={state}
         // onChange={(e) => setState(e.target.value)}
       />

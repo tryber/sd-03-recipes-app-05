@@ -19,17 +19,7 @@ function moveDetails(history, type, id) {
 
 function renderAria(aria) {
   return aria && (
-    <p
-      style={{
-        position: 'fixed',
-        top: 10,
-        right: '50%',
-        backgroundColor: 'rgba(0,0,0,0.6)',
-        padding: '4px 8px',
-        color: 'white',
-
-      }}
-    >
+    <p>
       Link copiado!
     </p>
   );
@@ -57,8 +47,8 @@ function renderImage(index, history, type, id, image) {
       <img
         data-testid={`${index}-horizontal-image`}
         src={image}
-        alt=""
-        style={{ width: 200 }}
+        alt="Imagem receita"
+        className="img-box-fav"
       />
 
     </Namebutton>
@@ -80,56 +70,48 @@ export default function FavoriteRecipeCard({ index, recipe, setRecipes }) {
   const history = useHistory();
 
   return (
-    <div>
-      {renderImage(index, history, type, id, image)}
-      <span data-testid={`${index}-horizontal-top-text`}>{alcoholicOrNot || `${area} - ${category}`}</span>
-      {/* <button
-        type="button"
-        onClick={() => moveDetails(history, type, id)}
-        data-testid={`${index}-horizontal-name`}
-        className="name"
-      >
-        {name}
+    <div className="container-receita-fav">
+      <span className="btn-image-fav">{renderImage(index, history, type, id, image)}</span>
+      <div className="container-right-fav">
+        <span className="category-text-fav" data-testid={`${index}-horizontal-top-text`}>{alcoholicOrNot || `${area} - ${category}`}</span>
+        {/* <button
+          type="button"
+          onClick={() => moveDetails(history, type, id)}
+          data-testid={`${index}-horizontal-name`}
+          className="name"
+        >
+          {name}
 
-      </button> */}
-      <Namebutton
-        {...{
-          index, moveDetails, history, type, id,
-        }}
-      >
-        {name}
+        </button> */}
+        <Namebutton
+          {...{
+            index, moveDetails, history, type, id,
+          }}
+        >
+          {name}
 
-      </Namebutton>
-
-      <button
-        type="button"
-        onClick={() => desFav(id, setRecipes)}
-      >
-        <img
-          data-testid={`${index}-horizontal-favorite-btn`}
-          src={favIcon}
-          alt=""
-        />
-      </button>
-
-      {/* <button
-        type="button"
-        onClick={(e) => copyCont(type, id, setAria)}
-        className="content-type"
-      >
-        <img
-          data-testid={`${index}-horizontal-share-btn`}
-          style={{ cursor: 'pointer' }}
-          src={share}
-          alt=""
-        />
-      </button> */}
-      <Copybutton
-        {...{
-          copyCont, type, id, setAria, share, index,
-        }}
-      />
-      {renderAria(aria)}
+        </Namebutton>
+        <div className="icons">
+          <button
+            type="button"
+            onClick={() => desFav(id, setRecipes)}
+            className="btn-icon-fav"
+          >
+            <img
+              data-testid={`${index}-horizontal-favorite-btn`}
+              src={favIcon}
+              alt=""
+              className="img-icon-fav"
+            />
+          </button>
+          <Copybutton
+            {...{
+              copyCont, type, id, setAria, share, index,
+            }}
+          />
+          {renderAria(aria)}
+        </div>
+      </div>
     </div>
   );
 }
