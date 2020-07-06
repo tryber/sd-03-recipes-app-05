@@ -71,9 +71,9 @@ export function renderExplorar() {
   renderIngredientesA(
     <Route exact path="/explorar/">
       <TPProvider>
-          <ExplorerScreen />
+        <ExplorerScreen />
       </TPProvider>
-    </Route>
+    </Route>,
   );
 }
 

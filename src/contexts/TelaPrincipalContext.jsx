@@ -4,9 +4,9 @@ import {
   getByName, getCategoryList, filterByCategory, filterByIngredient,
 } from '../service/mealAPI';
 import {
-  getByName as getCocktails, 
-  filterByIngredient as ingredientFetch, 
-  getCategoryList as getDrinkCategory, 
+  getByName as getCocktails,
+  filterByIngredient as ingredientFetch,
+  getCategoryList as getDrinkCategory,
   filterByCategory as filterDrink,
 } from '../service/cocktailAPI';
 

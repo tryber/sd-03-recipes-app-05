@@ -17,14 +17,14 @@ function getRandomDrinkOrMeal(setLink, location) {
   }
   const id = getRandomDrink().then(({ idDrink }) => idDrink);
   setLink(`/bebidas/${id}`);
-};
+}
 
 export default function DrinkAndMealExplorer() {
   const [link, setLink] = useState('');
 
   const location = useLocation();
 
-  getRandomDrinkOrMeal(setLink, location)
+  getRandomDrinkOrMeal(setLink, location);
 
   useEffect(() => {
     getRandomDrinkOrMeal();

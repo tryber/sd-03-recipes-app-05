@@ -103,7 +103,8 @@ export default function Inprocess() {
             {store.productDetails.strAlcoholic || store.productDetails.strCategory}
           </p>
           <span className="favs"><Favcontainer /></span>
-          <span className="body-box"><p className="txt-ingredients">{renderIngredients(store, location)}</p>
+          <span className="body-box">
+            <p className="txt-ingredients">{renderIngredients(store, location)}</p>
           </span>
           <div data-testid="instructions" className="body-box">
             <p className="title-box">INSTRUCTIONS</p>
