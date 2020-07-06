@@ -92,6 +92,20 @@ export default function Inprocess() {
       setDone(false);
     }
   });
+
+  function buttonRefatorado(){
+    return (
+      <button
+        className="btn-finalizar"
+        data-testid="finish-recipe-btn"
+        type="button"
+        onClick={() => saveDone(store, history, location)}
+        disabled={!done}
+        >
+        Finalizar Receita
+      </button>
+    )
+  }
   return (
     _.isEmpty(store.productDetails) ? <Loading />
       : (
@@ -110,15 +124,7 @@ export default function Inprocess() {
             <p className="title-box">INSTRUCTIONS</p>
             <p className="txt-ingredients">{store.productDetails.strInstructions}</p>
           </div>
-          <button
-            className="btn-finalizar"
-            data-testid="finish-recipe-btn"
-            type="button"
-            onClick={() => saveDone(store, history, location)}
-            disabled={!done}
-          >
-            Finalizar Receita
-          </button>
+            {buttonRefatorado()}
         </div>
       )
   );

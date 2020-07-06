@@ -19,20 +19,23 @@ export default function PerfilScreen() {
         <Link
           to="/receitas-feitas"
           data-testid="profile-done-btn"
-          className="btn1">
+          className="btn1"
+        >
           Receitas Feitas
         </Link>
         <Link
           to="/receitas-favoritas"
           data-testid="profile-favorite-btn"
-          className="btn1">
+          className="btn1"
+        >
           Receitas Favoritas
         </Link>
         <Link
           to="/"
           onClick={() => clearStorage()}
           data-testid="profile-logout-btn"
-          className="btn1">
+          className="btn1"
+        >
           Sair
         </Link>
       </div>
