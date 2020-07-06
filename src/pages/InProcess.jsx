@@ -93,7 +93,7 @@ export default function Inprocess() {
     }
   });
 
-  function buttonRefatorado(){
+  function buttonRefatorado() {
     return (
       <button
         className="btn-finalizar"
@@ -101,10 +101,10 @@ export default function Inprocess() {
         type="button"
         onClick={() => saveDone(store, history, location)}
         disabled={!done}
-        >
+      >
         Finalizar Receita
       </button>
-    )
+    );
   }
   return (
     _.isEmpty(store.productDetails) ? <Loading />
@@ -124,7 +124,7 @@ export default function Inprocess() {
             <p className="title-box">INSTRUCTIONS</p>
             <p className="txt-ingredients">{store.productDetails.strInstructions}</p>
           </div>
-            {buttonRefatorado()}
+          {buttonRefatorado()}
         </div>
       )
   );
