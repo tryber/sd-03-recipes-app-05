@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Filtertag from '../components/FilterTag';
 import FavoriteRecipeCard from '../components/FavoriteRecipeCard';
+import Header from '../components/Header';
 
 function filterType(filter) {
   if (filter === 'All') {
@@ -25,6 +26,7 @@ export default function FavoriteRecipes() {
 
   return (
     <div>
+      <Header title="Receitas Favoritas" />
       <div className="filter-container-favorite">
         <Filtertag
           setFilter={setFilter}

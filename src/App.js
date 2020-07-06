@@ -14,6 +14,8 @@ import Donerecipes from './pages/DoneRecipes';
 import FavoriteRecipes from './pages/FavoriteRecipes';
 import OrigemExplorer from './pages/OrigemExplorer';
 import ExplorarIngredients from './pages/ExplorarIngredients';
+import PerfilScreen from './components/PerfilScreen';
+import Notfound from './components/NotFound';
 
 function renderReceitasFeitas() {
   return (
@@ -49,6 +51,11 @@ function App() {
         {renderReceitasFeitas()}
         {renderComidas()}
         {renderBebibdas()}
+
+        <Route path="/perfil">
+          <PerfilScreen />
+        </Route>
+
         <Route path="/explorar/bebidas/ingredientes">
           <ExplorarIngredients />
         </Route>
@@ -57,12 +64,7 @@ function App() {
           <ExplorarIngredients />
         </Route>
 
-        <Route exact path="/explorar/:type">
-          <TPProvider>
-            <DrinkAndMealExplorer />
-          </TPProvider>
-        </Route>
-        <Route path="/explorar/">
+        <Route exact path="/explorar/">
           <TPProvider>
             <ExplorerScreen />
           </TPProvider>
@@ -80,30 +82,14 @@ function App() {
         </Route>
 
         <Route path="/explorar/bebidas/area">
-          <p>Not Found</p>
+          <Notfound />
         </Route>
-        {/*
-        <Route path="/receitas-feitas">
-          <Donerecipes />
-        </Route> */}
 
         <Route path="/receitas-favoritas">
           <PDProvider>
             <FavoriteRecipes />
           </PDProvider>
         </Route>
-
-        {/* <Route exact path="/comidas">
-          <TPProvider>
-            <Telaprincipal />
-          </TPProvider>
-        </Route>
-
-        <Route exact path="/bebidas">
-          <TPProvider>
-            <Telaprincipal />
-          </TPProvider>
-        </Route> */}
 
         <Route path="/comidas/:id/in-progress">
           <PDProvider>

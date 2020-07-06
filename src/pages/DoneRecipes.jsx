@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Filtertag from '../components/FilterTag';
 import RecipeCard from '../components/RecipeCard';
 import '../style/Done-recipes.css';
+import Header from '../components/Header';
 
 function filterType(filter) {
   if (filter === 'All') {
@@ -18,6 +19,7 @@ export default function DoneRecipes() {
   const recipes = JSON.parse(localStorage.getItem('doneRecipes')).filter(filterType(filter));
   return (
     <div className="body1">
+      <Header title="Receitas Feitas" />
       <div className="menu">
         <Filtertag
           setFilter={setFilter}

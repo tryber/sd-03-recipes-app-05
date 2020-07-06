@@ -3,6 +3,9 @@ import { useLocation } from 'react-router-dom';
 import { getIngredientList as drinkIngredients } from '../service/cocktailAPI';
 import { getIngredientList } from '../service/mealAPI';
 import ExplorarCard from '../components/ExplorarCard';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import Loading from '../components/Loading';
 
 function fetchIngredientList(type) {
   if (type === 'comidas') {
@@ -21,18 +24,21 @@ export default function ExplorarIngredients() {
   }, []);
 
   return (
-  // ingredients.length ? (
-    <div>
-      {ingredients
-        .map((ingredient, index) => (
-          <ExplorarCard
-            index={index}
-            key={ingredient}
-          >
-            {ingredient}
-          </ExplorarCard>
-        ))}
-    </div>
-  // ) : <p>Loading</p>
+    ingredients.length ? (
+      <div>
+        <Header title="Explorar Ingredientes" />
+        {ingredients
+          .map((ingredient, index) => (
+            <ExplorarCard
+              index={index}
+              key={ingredient}
+            >
+              {ingredient}
+            </ExplorarCard>
+          ))}
+        <Footer />
+      </div>
+
+    ) : <Loading />
   );
 }

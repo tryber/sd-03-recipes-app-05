@@ -6,6 +6,7 @@ import Loading from '../components/Loading';
 import { TelaPrincipalContext } from '../contexts/TelaPrincipalContext';
 import Footer from '../components/Footer';
 import '../style/Comidas.css';
+import Header from '../components/Header';
 
 export default function Telaprincipal() {
   const store = useContext(TelaPrincipalContext);
@@ -25,6 +26,7 @@ export default function Telaprincipal() {
     !store.content.length || !store.categories.length ? <Loading />
       : (
         <div className="body">
+          <Header title={location.pathname.includes('comidas') ? 'comidas' : 'bebidas'} search />
           <div className="container-category">
             <Categoryfilter category="All" />
             {store.categories

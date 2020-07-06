@@ -116,8 +116,11 @@ export default function Inprocess() {
             data-testid="finish-recipe-btn"
             type="button"
             onClick={() => saveDone(store, history, location)}
-            disabled={done}
-          >Finalizar Receita</button>
+            disabled={!done}
+          >
+            Finalizar Receita
+
+          </button>
         </div>
       )
   );

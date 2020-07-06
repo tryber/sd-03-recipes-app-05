@@ -5,6 +5,7 @@ import { getRandomMeal } from '../service/mealAPI';
 import FoodLoading from './Loading';
 import Footer from './Footer';
 import '../style/Explorer-com-beb.css';
+import Header from './Header';
 
 export default function DrinkAndMealExplorer() {
   const [link, setLink] = useState('');
@@ -29,6 +30,7 @@ export default function DrinkAndMealExplorer() {
 
   return link ? (
     <div className="body">
+      <Header title={location.pathname.includes('comidas') ? 'Explorar Comida' : 'Explorar Bebida'} />
       <section className="btn-group">
         <Link to={`${location.pathname}/ingredientes`} data-testid="explore-by-ingredient">
           <button className="btn">Por Ingredientes</button>

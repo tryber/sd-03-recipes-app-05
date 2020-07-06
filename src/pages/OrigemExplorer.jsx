@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import { origemExplorerContext } from '../contexts/OrigemExplorerContext';
 import Card from '../components/Card';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export default function OrigemExplorer() {
   const store = useContext(origemExplorerContext);
@@ -14,6 +16,7 @@ export default function OrigemExplorer() {
     store.recipes.length
     && (
     <div>
+      <Header title="Explorar Origem" search />
       <select
         data-testid="explore-by-area-dropdown"
         value={store.filter}
@@ -35,6 +38,7 @@ export default function OrigemExplorer() {
           />
         ))}
       </div>
+      <Footer />
 
     </div>
     )
