@@ -1,0 +1,41 @@
+.body-profile {
+  background-color: #ffe5d9;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 640px;
+  width: 360px;
+}
+
+.btn1 {
+  background-color: rgb(103, 4, 170);
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0 1px 1px 0 rgba(64, 6, 75, 0.835);
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 10px 30px;
+  padding: 15px 80px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn1:hover {
+  background-color: rgb(69, 13, 121);
+  cursor: pointer;
+}
+
+.btn-group1 {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1%;
+}
+
+.txt-email1 {
+  color: blueviolet;
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 0;
+  text-align: center;
+}
