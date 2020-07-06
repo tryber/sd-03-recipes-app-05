@@ -20,7 +20,7 @@ export default function DoneRecipes() {
   return (
     <div className="body1">
       <Header title="Receitas Feitas" />
-      <div className="menu">
+      <div className="menu test">
         <Filtertag
           setFilter={setFilter}
           datatest="filter-by-all-btn"

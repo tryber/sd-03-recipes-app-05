@@ -43,7 +43,7 @@ export function renderBebibdas() {
   );
 }
 
-export function renderPerfil(){
+export function renderPerfil() {
   return (
     <Route path="/perfil">
       <PerfilScreen />
@@ -51,7 +51,7 @@ export function renderPerfil(){
   );
 }
 
-export function renderIngredientesB(){
+export function renderIngredientesB() {
   return (
     <Route path="/explorar/bebidas/ingredientes">
       <ExplorarIngredients />
@@ -59,25 +59,25 @@ export function renderIngredientesB(){
   );
 }
 
-export function renderIngredientesA(){
-  return(
+export function renderIngredientesA() {
+  return (
     <Route path="/explorar/comidas/ingredientes">
       <ExplorarIngredients />
     </Route>
   );
 }
 
-export function renderExplorar(){
+export function renderExplorar() {
   renderIngredientesA(
     <Route exact path="/explorar/">
-        <TPProvider>
+      <TPProvider>
           <ExplorerScreen />
       </TPProvider>
     </Route>
   );
 }
 
-export function renderBarra(){
+export function renderBarra() {
   return (
     <Route exact path="/">
       <TPProvider>
@@ -87,8 +87,8 @@ export function renderBarra(){
   );
 }
 
-export function renderAreaA(){
-  return(
+export function renderAreaA() {
+  return (
     <Route path="/explorar/comidas/area">
       <OEProvider>
         <OrigemExplorer />
@@ -97,7 +97,7 @@ export function renderAreaA(){
   );
 }
 
-export function renderAreaB(){
+export function renderAreaB() {
   return (
     <Route path="/explorar/bebidas/area">
       <Notfound />
@@ -105,7 +105,7 @@ export function renderAreaB(){
   );
 }
 
-export function renderFavoritas(){
+export function renderFavoritas() {
   return (
     <Route path="/receitas-favoritas">
       <PDProvider>
@@ -115,7 +115,7 @@ export function renderFavoritas(){
   );
 }
 
-export function renderProgressA(){
+export function renderProgressA() {
   return (
     <Route path="/comidas/:id/in-progress">
       <PDProvider>
@@ -125,7 +125,7 @@ export function renderProgressA(){
   );
 }
 
-export function renderProgressB(){
+export function renderProgressB() {
   return (
     <Route path="/bebidas/:id/in-progress">
       <PDProvider>
@@ -135,7 +135,7 @@ export function renderProgressB(){
   );
 }
 
-export function renderComidasId(){
+export function renderComidasId() {
   return (
     <Route path="/comidas/:id">
       <PDProvider>
@@ -145,7 +145,7 @@ export function renderComidasId(){
   );
 }
 
-export function renderBebidasId(){
+export function renderBebidasId() {
   return (
     <Route path="/bebidas/:id">
       <PDProvider>
@@ -155,7 +155,7 @@ export function renderBebidasId(){
   );
 }
 
-export function renderExplorarTipo(){
+export function renderExplorarTipo() {
   return (
     <Route exact path="/explorar/:type">
       <TPProvider>

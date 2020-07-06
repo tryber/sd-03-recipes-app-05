@@ -72,7 +72,7 @@ function renderImage(location, setAria) {
   );
 }
 
-export default function Favcontainer({ dataTest = 'favorite-btn' }) {
+export default function Favcontainer() {
   const location = useLocation();
   const [aria, setAria] = useState(false);
   const [fav, setFav] = useState(false);
@@ -95,7 +95,7 @@ export default function Favcontainer({ dataTest = 'favorite-btn' }) {
 
       >
         <img
-          data-testid={dataTest}
+          data-testid="favorite-btn"
           src={fav ? favHeart : heart}
           alt=""
         />
