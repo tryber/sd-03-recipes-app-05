@@ -19,6 +19,7 @@ export async function getCategoryList() {
 // Pega todas as refeições de uma categoria específica
 export async function filterByCategory(category) {
   const categoryReturn = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`).then((r) => r.json());
+
   return categoryReturn.meals;
 }
 
