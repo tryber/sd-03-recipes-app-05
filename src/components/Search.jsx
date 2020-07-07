@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React from 'react';
 // import * as apiC from '../service/cocktailAPI';
 // import * as apiM from '../service/mealAPI';
 // import { useFilterAPI } from '../contexts/filterAPI';
@@ -12,9 +11,12 @@ import { useLocation } from 'react-router-dom';
 // const location = useLocation();
 // const path = location.pathname.slice(1).split('/')[0];
 
-// const nome = () => setProduct(path === 'comidas' ? apiM.getByName(state) : apiC.getByName(state));
-// const pl = () => setProduct(path === 'comidas' ? apiM.filterByFirst(state) : apiC.filterByFirst(state));
-// const ingredientes = () => setProduct(path === 'comidas' ? apiM.filterByIngredient(state) : apiC.filterByIngredient(state));
+// const nome = () => setProduct(path === 'comidas' ? 
+//apiM.getByName(state) : apiC.getByName(state));
+// const pl = () => setProduct(path === 'comidas' ? 
+//apiM.filterByFirst(state) : apiC.filterByFirst(state));
+// const ingredientes = () => setProduct(path === 'comidas' ? 
+// apiM.filterByIngredient(state) : apiC.filterByIngredient(state));
 
 // function fetchProduct() {
 //   switch (filter) {
