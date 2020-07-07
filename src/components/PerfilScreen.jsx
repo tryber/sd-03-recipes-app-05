@@ -30,7 +30,14 @@ export default function PerfilScreen() {
         >
           Receitas Favoritas
         </Link>
-        <Link to="/" onClick={() => clearStorage()} data-testid="profile-logout-btn" className="btn1">Sair</Link>
+        <Link
+          to="/"
+          onClick={() => clearStorage()}
+          data-testid="profile-logout-btn"
+          className="btn1"
+        >
+          Sair
+        </Link>
       </div>
       <Footer />
     </div>

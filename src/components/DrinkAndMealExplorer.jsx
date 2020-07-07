@@ -7,22 +7,24 @@ import Footer from './Footer';
 import '../style/Explorer-com-beb.css';
 import Header from './Header';
 
+function getRandomDrinkOrMeal(setLink, location) {
+  const type = location.pathname.slice(10);
+
+  if (type === 'comidas') {
+    const id = getRandomMeal().then(({ idMeal }) => idMeal);
+    setLink(`/comidas/${id}`);
+    return;
+  }
+  const id = getRandomDrink().then(({ idDrink }) => idDrink);
+  setLink(`/bebidas/${id}`);
+}
+
 export default function DrinkAndMealExplorer() {
   const [link, setLink] = useState('');
 
   const location = useLocation();
 
-  const getRandomDrinkOrMeal = async () => {
-    const type = location.pathname.slice(10);
-
-    if (type === 'comidas') {
-      const id = await getRandomMeal().then(({ idMeal }) => idMeal);
-      setLink(`/comidas/${id}`);
-      return;
-    }
-    const id = await getRandomDrink().then(({ idDrink }) => idDrink);
-    setLink(`/bebidas/${id}`);
-  };
+  getRandomDrinkOrMeal(setLink, location);
 
   useEffect(() => {
     getRandomDrinkOrMeal();

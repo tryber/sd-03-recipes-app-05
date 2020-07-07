@@ -64,6 +64,37 @@ function renderIngredients(store, location) {
   );
 }
 
+function buttonRefatorado(store, history, location, done) {
+  return (
+    <button
+      className="btn-finalizar"
+      data-testid="finish-recipe-btn"
+      type="button"
+      onClick={() => saveDone(store, history, location)}
+      disabled={!done}
+    >
+      Finalizar Receita
+    </button>
+  );
+}
+
+function instrucions(store) {
+  return (
+    <div data-testid="instructions" className="body-box">
+      <p className="title-box">INSTRUCTIONS</p>
+      <p className="txt-ingredients">{store.productDetails.strInstructions}</p>
+    </div>
+  );
+}
+
+function categoryTxt(store) {
+  return (
+    <p className="category-txt" data-testid="recipe-category">
+      {store.productDetails.strAlcoholic || store.productDetails.strCategory}
+    </p>
+  );
+}
+
 function renderImage(store) {
   return (
     <img
@@ -92,6 +123,7 @@ export default function Inprocess() {
       setDone(false);
     }
   });
+
   return (
     _.isEmpty(store.productDetails) ? <Loading />
       : (
@@ -99,26 +131,13 @@ export default function Inprocess() {
           <p className="title-txt" data-testid="recipe-title">
             {store.productDetails.strMeal || store.productDetails.strDrink}
           </p>
-          <p className="category-txt" data-testid="recipe-category">
-            {store.productDetails.strAlcoholic || store.productDetails.strCategory}
-          </p>
+          {categoryTxt(store)}
           <span className="favs"><Favcontainer /></span>
           <span className="body-box">
             <p className="txt-ingredients">{renderIngredients(store, location)}</p>
           </span>
-          <div data-testid="instructions" className="body-box">
-            <p className="title-box">INSTRUCTIONS</p>
-            <p className="txt-ingredients">{store.productDetails.strInstructions}</p>
-          </div>
-          <button
-            className="btn-finalizar"
-            data-testid="finish-recipe-btn"
-            type="button"
-            onClick={() => saveDone(store, history, location)}
-            disabled={!done}
-          >
-            Finalizar Receita
-          </button>
+          {instrucions(store)}
+          {buttonRefatorado(store, history, location, done)}
         </div>
       )
   );

@@ -22,7 +22,6 @@ export default function ExplorarCard({ index, children }) {
     </Link>
   );
 }
-
 ExplorarCard.propTypes = {
   index: PropTypes.number.isRequired,
   children: PropTypes.string.isRequired,
