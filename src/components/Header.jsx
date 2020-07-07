@@ -9,22 +9,22 @@ import '../style/Header.css';
 function Header({ title, search }) {
   const [click, setClick] = useState(false);
   return (
-    <nav className="title-header">
-      <Link to="/perfil">
-        <img className="profileIcon" src={profileIcon} alt="icon" />
-      </Link>
-      <h1>{title}</h1>
-      <div className="container-search">
-        { search && (
-        <button className="btn-search" type="button" onClick={() => setClick(!click)}>
-          <img src={searchIcon} className="searchIcon" alt="search" />
-        </button>
-        )}
-        {
-          click && <SearchBar />
-        }
-      </div>
-    </nav>
+    <div>
+      <nav className="title-header">
+        <Link to="/perfil">
+          <img data-testid="profile-top-btn" className="profileIcon" src={profileIcon} alt="icon" />
+        </Link>
+        <h1 data-testid="page-title">{title}</h1>
+        <div className="container-search">
+          { search && (
+          <button className="btn-search" type="button" onClick={() => setClick(!click)}>
+            <img data-testid="search-top-btn" src={searchIcon} className="searchIcon" alt="search" />
+          </button>
+          )}
+        </div>
+      </nav>
+      {click && <SearchBar />}
+    </div>
   );
 }
 

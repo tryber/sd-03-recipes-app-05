@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
-import Header from '../components/Header';
+import Header from './Header';
 import '../style/Profile.css';
 
 function clearStorage() {
@@ -14,7 +14,8 @@ export default function PerfilScreen() {
       <Header title="Perfil" />
       <div className="btn-group1">
         <p data-testid="profile-email" className="txt-email1">
-          {JSON.parse(localStorage.getItem('user')).email}
+          {(JSON.parse(localStorage.getItem('user'))
+          && JSON.parse(localStorage.getItem('user')).email) || ''}
         </p>
         <Link
           to="/receitas-feitas"

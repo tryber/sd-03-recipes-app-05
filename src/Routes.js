@@ -68,12 +68,12 @@ export function renderIngredientesA() {
 }
 
 export function renderExplorar() {
-  renderIngredientesA(
+  return (
     <Route exact path="/explorar/">
       <TPProvider>
         <ExplorerScreen />
       </TPProvider>
-    </Route>,
+    </Route>
   );
 }
 

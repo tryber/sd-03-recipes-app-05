@@ -1,22 +1,23 @@
 import PropTypes from 'prop-types';
 import React, { createContext, useState } from 'react';
 import {
-  getByName, getCategoryList, filterByCategory, filterByIngredient,
+  getByName, getCategoryList, filterByCategory, filterByIngredient, filterByFirstLetter,
 } from '../service/mealAPI';
 import {
   getByName as getCocktails,
   filterByIngredient as ingredientFetch,
   getCategoryList as getDrinkCategory,
   filterByCategory as filterDrink,
+  filterByFirstLetter as drinkFirstLetter,
 } from '../service/cocktailAPI';
 
 export const TelaPrincipalContext = createContext(null);
 
-async function changeContentFetch(type) {
+async function changeContentFetch(type, filter) {
   if (type === 'comidas') {
-    return (await getByName('')).slice(0, 12);
+    return (await getByName(filter || '')).slice(0, 12);
   } if (type === 'bebidas') {
-    return (await getCocktails('')).slice(0, 12);
+    return (await getCocktails(filter || '')).slice(0, 12);
   }
   return undefined;
 }
@@ -26,6 +27,15 @@ async function changeCategoryFetch(type) {
     return (await getCategoryList()).slice(0, 5);
   } if (type === 'bebidas') {
     return (await getDrinkCategory()).slice(0, 5);
+  }
+  return undefined;
+}
+
+async function changeFirstLetter(type, letter) {
+  if (type === 'comidas') {
+    return (await filterByFirstLetter(letter)).slice(0, 5);
+  } if (type === 'bebidas') {
+    return (await drinkFirstLetter(letter)).slice(0, 5);
   }
   return undefined;
 }
@@ -64,6 +74,15 @@ const Provider = ({ children }) => {
     setFilter('All');
   }
 
+  async function getContentUsingName(type, name) {
+    setContent([]);
+    setContent(await changeContentFetch(type, name));
+  }
+
+  async function getByFisrtLetter(type, letter) {
+    setContent(await changeFirstLetter(type, letter));
+  }
+
   async function getCategories(type) {
     setCategories(await changeCategoryFetch(type));
   }
@@ -76,12 +95,15 @@ const Provider = ({ children }) => {
 
   const store = {
     content,
+    setContent,
     categories,
     filter,
     getContent,
     getCategories,
     getFilteredResults,
+    getContentUsingName,
     setFilter,
+    getByFisrtLetter,
 
   };
 

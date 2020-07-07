@@ -118,7 +118,8 @@ export default function Inprocess() {
   }, []);
   useEffect(() => {
     try {
-      setDone(printIngredients(store).length === JSON.parse(localStorage.getItem('inProgressRecipes'))[id].length);
+      const keys = type === 'comidas' ? 'meals' : 'cocktails';
+      setDone(printIngredients(store).length === JSON.parse(localStorage.getItem('inProgressRecipes'))[keys][id].length);
     } catch (e) {
       setDone(false);
     }
@@ -127,7 +128,8 @@ export default function Inprocess() {
   return (
     _.isEmpty(store.productDetails) ? <Loading />
       : (
-        <div className="body"> {renderImage(store)}
+        <div className="body">
+          {renderImage(store)}
           <p className="title-txt" data-testid="recipe-title">
             {store.productDetails.strMeal || store.productDetails.strDrink}
           </p>

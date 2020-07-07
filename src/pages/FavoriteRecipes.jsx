@@ -21,7 +21,7 @@ export default function FavoriteRecipes() {
 
   useEffect(() => {
     try {
-      setRecipes(JSON.parse(localStorage.getItem('favoriteRecipes')));
+      setRecipes(JSON.parse(localStorage.getItem('favoriteRecipes')) || []);
     } catch (e) { setRecipes([]); }
   }, []);
 

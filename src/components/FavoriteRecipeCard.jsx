@@ -43,6 +43,7 @@ function renderImage(index, history, type, id, image) {
       {...{
         index, moveDetails, history, type, id,
       }}
+      notDataTest
     >
       <img
         data-testid={`${index}-horizontal-image`}
