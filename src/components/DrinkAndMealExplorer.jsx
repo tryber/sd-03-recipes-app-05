@@ -24,10 +24,8 @@ export default function DrinkAndMealExplorer() {
 
   const location = useLocation();
 
-  getRandomDrinkOrMeal(setLink, location);
-
   useEffect(() => {
-    getRandomDrinkOrMeal();
+    getRandomDrinkOrMeal(setLink, location);
   }, []);
 
   return link ? (

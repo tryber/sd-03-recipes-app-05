@@ -15,9 +15,19 @@ export default function ExplorarCard({ index, children }) {
 
   return (
     <Link to={{ pathname: `/${type}`, state: { filter: children } }}>
-      <div data-testid={`${index}-ingredient-card`}>
-        <img data-testid={`${index}-card-img`} src={fetchIngredient(children, type)} alt="" />
-        <p data-testid={`${index}-card-name`}>{children}</p>
+      <div data-testid={`${index}-ingredient-card`} className="cards-ingr">
+        <img
+          data-testid={`${index}-card-img`}
+          src={fetchIngredient(children, type)}
+          alt="imagem ingrediente"
+          className="img-ingr"
+        />
+        <p
+          data-testid={`${index}-card-name`}
+          className="text-ingr"
+        >
+          {children}
+        </p>
       </div>
     </Link>
   );

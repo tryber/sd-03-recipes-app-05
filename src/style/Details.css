@@ -30,6 +30,22 @@
   margin: -60px 0 20px 260px;
 }
 
+
+.button-ico {
+  background-color: rgb(226, 216, 231);
+  border: 0;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+
+.image-ico {
+  cursor: pointer;
+  height: 25px;
+  padding: 2px;
+  width: 18px;
+}
+
+
 .title-box {
   color: rgb(103, 4, 170);
   font-size: 16px;

@@ -3,12 +3,12 @@
   background-color: #ff7b00;
   color: white;
   display: flex;
-  font-size: 18px;
+  font-size: 14px;
   font-variant: small-caps;
   height: 50px;
   justify-content: space-between;
   padding: 0 30px;
-  text-shadow: rgb(211, 104, 5) 0.1em 0.1em 0.2em;
+  text-shadow: rgb(231, 120, 15) 0.1em 0.1em 0.2em;
 }
 
 .profileIcon {

@@ -1,0 +1,21 @@
+.body-orig {
+  background-color: #ffe5d9;
+  min-height: 640px;
+  width: 360px;
+}
+
+.container-orig {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.select-orig {
+  background-color: white;
+  border: 1px solid rgba(255, 166, 0, 0.37);
+  border-radius: 7px;
+  height: 27px;
+  margin: 10px 7% 2px;
+  padding: 5px;
+  width: 85%;
+}

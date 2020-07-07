@@ -60,13 +60,15 @@ function renderImage(location, setAria) {
     <button
       type="button"
       data-testid="share-btn"
+      className="button-ico"
       onClick={() => copyContent(location, setAria)}
     >
       <img
         className="clip"
         style={{ cursor: 'pointer' }}
         src={share}
-        alt=""
+        alt="icone compartilhar"
+        className="image-ico"
       />
     </button>
   );
@@ -92,12 +94,13 @@ export default function Favcontainer() {
       <button
         type="button"
         onClick={() => setFavorite(store, fav, location, setFav)}
-
+        className="button-ico"
       >
         <img
           data-testid="favorite-btn"
           src={fav ? favHeart : heart}
           alt=""
+          className="image-ico"
         />
       </button>
 
@@ -105,10 +108,10 @@ export default function Favcontainer() {
       <p
         style={{
           position: 'fixed',
-          top: 10,
-          right: '50%',
+          top: '10px',
+          right: '38%',
           backgroundColor: 'rgba(0,0,0,0.6)',
-          padding: '4px 8px',
+          padding: '5px 10px',
           color: 'white',
 
         }}

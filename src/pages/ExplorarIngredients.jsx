@@ -6,6 +6,7 @@ import ExplorarCard from '../components/ExplorarCard';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Loading from '../components/Loading';
+import '../style/Explorer-ingr.css';
 
 function fetchIngredientList(type) {
   if (type === 'comidas') {
@@ -25,17 +26,19 @@ export default function ExplorarIngredients() {
 
   return (
     ingredients.length ? (
-      <div>
+      <div className="body-ingr">
         <Header title="Explorar Ingredientes" />
-        {ingredients
-          .map((ingredient, index) => (
-            <ExplorarCard
-              index={index}
-              key={ingredient}
-            >
-              {ingredient}
-            </ExplorarCard>
-          ))}
+        <div className="container-ingr">
+          {ingredients
+            .map((ingredient, index) => (
+              <ExplorarCard
+                index={index}
+                key={ingredient}
+              >
+                {ingredient}
+              </ExplorarCard>
+            ))}
+        </div>
         <Footer />
       </div>
 
