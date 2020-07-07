@@ -106,6 +106,23 @@ export default function Inprocess() {
       </button>
     );
   }
+
+  function instrucions(){
+    return (
+      <div data-testid="instructions" className="body-box">
+        <p className="title-box">INSTRUCTIONS</p>
+        <p className="txt-ingredients">{store.productDetails.strInstructions}</p>
+      </div>
+    );
+  }
+
+  function categoryTxt(){
+    return (
+      <p className="category-txt" data-testid="recipe-category">
+        {store.productDetails.strAlcoholic || store.productDetails.strCategory}
+      </p>
+    );
+  }
   return (
     _.isEmpty(store.productDetails) ? <Loading />
       : (
@@ -113,17 +130,12 @@ export default function Inprocess() {
           <p className="title-txt" data-testid="recipe-title">
             {store.productDetails.strMeal || store.productDetails.strDrink}
           </p>
-          <p className="category-txt" data-testid="recipe-category">
-            {store.productDetails.strAlcoholic || store.productDetails.strCategory}
-          </p>
+          {categoryTxt()}
           <span className="favs"><Favcontainer /></span>
           <span className="body-box">
             <p className="txt-ingredients">{renderIngredients(store, location)}</p>
           </span>
-          <div data-testid="instructions" className="body-box">
-            <p className="title-box">INSTRUCTIONS</p>
-            <p className="txt-ingredients">{store.productDetails.strInstructions}</p>
-          </div>
+            {instrucions()}
           {buttonRefatorado()}
         </div>
       )
