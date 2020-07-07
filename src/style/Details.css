@@ -2,8 +2,6 @@
   background-color: white;
   display: flex;
   flex-direction: column;
-  
-  /* justify-content: space-between; */
   min-height: 640px;
   width: 360px;
 }
