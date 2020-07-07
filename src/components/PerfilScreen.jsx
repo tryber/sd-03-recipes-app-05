@@ -16,16 +16,16 @@ export default function PerfilScreen() {
         <p data-testid="profile-email" className="txt-email1">
           {JSON.parse(localStorage.getItem('user')).email}
         </p>
-        <Link 
+        <Link
           to="/receitas-feitas"
           data-testid="profile-done-btn"
           className="btn1"
         >
           Receitas Feitas
         </Link>
-        <Link 
-          to="/receitas-favoritas" 
-          data-testid="profile-favorite-btn" 
+        <Link
+          to="/receitas-favoritas"
+          data-testid="profile-favorite-btn"
           className="btn1"
         >
           Receitas Favoritas
