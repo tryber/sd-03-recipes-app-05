@@ -64,7 +64,6 @@ function renderImage(location, setAria) {
       onClick={() => copyContent(location, setAria)}
     >
       <img
-        className="clip"
         style={{ cursor: 'pointer' }}
         src={share}
         alt="icone compartilhar"

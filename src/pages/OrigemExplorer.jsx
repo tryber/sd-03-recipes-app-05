@@ -30,15 +30,15 @@ export default function OrigemExplorer() {
         {store.categories.map((area) => <option data-testid={`${area}-option`} value={area}>{area}</option>)}
       </select>
       <div className="container-orig">
-          {store.recipes.map((meal, index) => (
-            <Card
-              id={meal.idMeal}
-              key={meal.strMeal}
-              index={index}
-              thumb={meal.strMealThumb}
-              meal={meal.strMeal}
-            />
-          ))}
+        {store.recipes.map((meal, index) => (
+          <Card
+            id={meal.idMeal}
+            key={meal.strMeal}
+            index={index}
+            thumb={meal.strMealThumb}
+            meal={meal.strMeal}
+          />
+        ))}
       </div>
       <Footer />
 
