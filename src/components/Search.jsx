@@ -35,24 +35,36 @@ async function changeIngredientFetch(filterToUse, type) {
   return undefined;
 }
 
+async function renderIfIngredient(store, search, type, history) {
+  const result = await changeIngredientFetch(search, type);
+  if (!result) return alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+  if (result.length === 1) return history.push(`/${type}/${result[0].idMeal || result[0].idDrink}`);
+  return store.setContent(result.slice(0, 12));
+}
+
+async function rendeIfName(store, search, type, history) {
+  const result = await getName(type, search);
+  if (!result) return alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+  if (result.length === 1) return history.push(`/${type}/${result[0].idMeal || result[0].idDrink}`);
+  return store.setContent(result.slice(0, 12));
+}
+
+async function renderIrFirst(store, search, type, history) {
+  if (search.length > 1) return alert('Sua busca deve conter somente 1 (um) caracter');
+  const result = await changeByFirstLetter(type, search);
+  if (!result) return alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+  if (result.length === 1) return history.push(`/${type}/${result[0].idMeal || result[0].idDrink}`);
+  return store.setContent(result.slice(0, 12));
+}
+
 async function handleSubmit(location, radio, store, search, history) {
   const type = location.pathname.includes('comidas') ? 'comidas' : 'bebidas';
   if (radio === 'Ingrediente') {
-    const result = await changeIngredientFetch(search, type);
-    if (!result) alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
-    else if (result.length === 1) history.push(`/${type}/${result[0].idMeal || result[0].idDrink}`);
-    else store.setContent(result.slice(0, 12));
+    await renderIfIngredient(store, search, type, history);
   } else if (radio === 'Nome') {
-    const result = await getName(type, search);
-    if (!result) alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
-    else if (result.length === 1) history.push(`/${type}/${result[0].idMeal || result[0].idDrink}`);
-    else store.setContent(result.slice(0, 12));
+    await rendeIfName(store, search, type, history);
   } else if (radio === 'first') {
-    if (search.length > 1) return alert('Sua busca deve conter somente 1 (um) caracter');
-    const result = await changeByFirstLetter(type, search);
-    if (!result) alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
-    else if (result.length === 1) history.push(`/${type}/${result[0].idMeal || result[0].idDrink}`);
-    else store.setContent(result.slice(0, 12));
+    await renderIrFirst(store, search, type, history);
   }
   return null;
 }
