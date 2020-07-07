@@ -78,7 +78,7 @@ function buttonRefatorado(store, history, location, done) {
   );
 }
 
-function instrucions(store){
+function instrucions(store) {
   return (
     <div data-testid="instructions" className="body-box">
       <p className="title-box">INSTRUCTIONS</p>
@@ -87,7 +87,7 @@ function instrucions(store){
   );
 }
 
-function categoryTxt(store){
+function categoryTxt(store) {
   return (
     <p className="category-txt" data-testid="recipe-category">
       {store.productDetails.strAlcoholic || store.productDetails.strCategory}
