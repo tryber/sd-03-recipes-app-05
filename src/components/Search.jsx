@@ -14,6 +14,7 @@ async function getName(type, name) {
   } if (type === 'bebidas') {
     return getCocktails(name || '');
   }
+  return null;
 }
 
 async function changeByFirstLetter(type, letter) {
@@ -60,6 +61,7 @@ function SearchBar() {
       else if (result.length === 1) history.push(`/${type}/${result[0].idMeal || result[0].idDrink}`);
       else store.setContent(result.slice(0, 12));
     }
+    return null;
   }
 
   return (

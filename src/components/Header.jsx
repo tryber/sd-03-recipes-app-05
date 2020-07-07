@@ -18,7 +18,12 @@ function Header({ title, search }) {
         <div className="container-search">
           { search && (
           <button className="btn-search" type="button" onClick={() => setClick(!click)}>
-            <img data-testid="search-top-btn" src={searchIcon} className="searchIcon" alt="search" />
+            <img
+              data-testid="search-top-btn"
+              src={searchIcon}
+              className="searchIcon"
+              alt="search"
+            />
           </button>
           )}
         </div>

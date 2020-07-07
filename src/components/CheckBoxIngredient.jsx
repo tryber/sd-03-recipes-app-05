@@ -5,7 +5,9 @@ import { ProducDetailsContext } from '../contexts/ProducDetailsContext';
 
 const _ = require('lodash');
 
-function check(recipeId, index, checked, setChecked, store, keys) {
+function check({
+  recipeId, index, checked, setChecked, store, keys,
+}) {
   let recipe;
   let inProgress;
 
@@ -48,7 +50,9 @@ export default function Checkboxingredient({ index, children, recipeId }) {
     >
       <input
         checked={checked}
-        onChange={() => check(recipeId, index, checked, setChecked, store, keys)}
+        onChange={() => check({
+          recipeId, index, checked, setChecked, store, keys,
+        })}
         type="checkbox"
         name="ingredient"
         id="ingredient"
