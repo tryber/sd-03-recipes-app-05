@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { ProducDetailsContext } from '../contexts/ProducDetailsContext';
 
 const _ = require('lodash');
 
@@ -77,4 +76,5 @@ Checkboxingredient.propTypes = {
   children: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   recipeId: PropTypes.number.isRequired,
+  setDone: PropTypes.func.isRequired,
 };
