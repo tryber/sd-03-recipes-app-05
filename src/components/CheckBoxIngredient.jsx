@@ -1,15 +1,19 @@
 import PropTypes from 'prop-types';
 import React, { useState, useContext } from 'react';
+import { useLocation } from 'react-router-dom';
 import { ProducDetailsContext } from '../contexts/ProducDetailsContext';
 
 const _ = require('lodash');
 
-function check(recipeId, index, checked, setChecked, store) {
+function check({
+  recipeId, index, checked, setChecked, keys,
+}) {
   let recipe;
   let inProgress;
+
   try {
     inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
-    recipe = inProgress[recipeId];
+    recipe = inProgress[keys][recipeId];
   } catch (e) {
     inProgress = [];
     recipe = [];
@@ -19,22 +23,27 @@ function check(recipeId, index, checked, setChecked, store) {
   } else {
     recipe.push(index);
   }
-  localStorage.setItem('inProgressRecipes', JSON.stringify({ ...inProgress, [recipeId]: recipe }));
-  store.setRecipes({ ...inProgress, [recipeId]: recipe });
+  localStorage.setItem('inProgressRecipes', JSON.stringify({ ...inProgress, [keys]: { [recipeId]: recipe } }));
+  // store.setRecipes({ ...inProgress, [recipeId]: recipe });
   setChecked(!checked);
 }
 
-export default function Checkboxingredient({ index, children, recipeId }) {
+export default function Checkboxingredient({
+  index, children, recipeId, setDone,
+}) {
+  const location = useLocation();
+  const type = location.pathname.includes('comidas') ? 'comidas' : 'bebidas';
+  const keys = type === 'comidas' ? 'meals' : 'cocktails';
   function setCheckState() {
     try {
       const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
-      return inProgress[recipeId].includes(index);
+      return inProgress[keys][recipeId].includes(index);
     } catch (err) {
       return false;
     }
   }
   const [checked, setChecked] = useState(setCheckState());
-  const store = useContext(ProducDetailsContext);
+  // const store = useContext(ProducDetailsContext);
 
   return (
     <div
@@ -43,7 +52,12 @@ export default function Checkboxingredient({ index, children, recipeId }) {
     >
       <input
         checked={checked}
-        onChange={() => check(recipeId, index, checked, setChecked, store)}
+        onChange={() => {
+          check({
+            recipeId, index, checked, setChecked, keys,
+          });
+          setDone();
+        }}
         type="checkbox"
         name="ingredient"
         id="ingredient"

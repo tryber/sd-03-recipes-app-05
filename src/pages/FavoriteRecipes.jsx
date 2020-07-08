@@ -21,7 +21,7 @@ export default function FavoriteRecipes() {
 
   useEffect(() => {
     try {
-      setRecipes(JSON.parse(localStorage.getItem('favoriteRecipes')));
+      setRecipes(JSON.parse(localStorage.getItem('favoriteRecipes')) || []);
     } catch (e) { setRecipes([]); }
   }, []);
 
@@ -51,8 +51,8 @@ export default function FavoriteRecipes() {
 
         </Filtertag>
       </div>
-      <div>
-        {recipes.length === 0 && 'Não há receitas favoritadas'}
+      <div className="">
+        {recipes.length === 0 && <div className="text-nf">Não há receitas favoritadas</div>}
         {filteredRecipes
           .map((recipe, index) => (
             <FavoriteRecipeCard

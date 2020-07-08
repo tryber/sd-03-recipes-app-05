@@ -17,11 +17,12 @@ function isDone(store) {
   return doneArray.some(({ id }) => id === idtoCompare);
 }
 
-function goToProgress(store, buttonText, location, history) {
+function goToProgress(store, buttonText, location, history, type) {
   const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
   const id = store.productDetails.idDrink || store.productDetails.idMeal;
   if (buttonText === 'Iniciar Receita') {
-    localStorage.setItem('inProgressRecipes', JSON.stringify({ ...inProgress, [id]: [] }));
+    const key = type === 'comidas' ? 'meals' : 'cocktails';
+    localStorage.setItem('inProgressRecipes', JSON.stringify({ ...inProgress, [key]: { [id]: [] } }));
   }
 
   const path = location.pathname;
@@ -102,6 +103,7 @@ export default function Productdetails() {
   const store = useContext(ProducDetailsContext);
   const [page] = useState(0);
   const location = useLocation();
+  const typex = location.pathname.includes('comidas') ? 'comidas' : 'bebidas';
   const history = useHistory();
   const [buttonText, setButtonText] = useState('Iniciar receita');
   useEffect(() => {
@@ -130,7 +132,7 @@ export default function Productdetails() {
           <div className="body-box">{renderYoutube(store)}</div>
           <div className="body-box">{renderRecomendations(store, page)}</div>
           <button
-            onClick={() => goToProgress(store, buttonText, location, history)}
+            onClick={() => goToProgress(store, buttonText, location, history, typex)}
             style={{ display: isDone(store) ? 'none' : 'block' }}
             data-testid="start-recipe-btn"
             type="button"

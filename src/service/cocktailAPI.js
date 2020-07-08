@@ -53,3 +53,8 @@ export async function filterByIngredient(ingredient) {
   return (await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`)
     .then((r) => r.json())).drinks;
 }
+
+export async function filterByFirstLetter(letter) {
+  return (await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`)
+    .then((r) => r.json())).drinks;
+}

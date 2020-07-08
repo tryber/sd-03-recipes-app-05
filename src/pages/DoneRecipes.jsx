@@ -16,7 +16,8 @@ function filterType(filter) {
 
 export default function DoneRecipes() {
   const [filter, setFilter] = useState('All');
-  const recipes = JSON.parse(localStorage.getItem('doneRecipes')).filter(filterType(filter));
+  let recipes = JSON.parse(localStorage.getItem('doneRecipes'));
+  recipes = recipes ? recipes.filter(filterType(filter)) : [];
   return (
     <div className="body1">
       <Header title="Receitas Feitas" />

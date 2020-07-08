@@ -2,8 +2,8 @@
   background-color: white;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   min-height: 640px;
+  padding-bottom: 70px;
   width: 360px;
 }
 
@@ -86,14 +86,16 @@
 .btn-continuar {
   background-color: rgb(103, 4, 170);
   border: 0;
-  border-radius: 10px;
+  border-radius: 20px;
+  bottom: 0;
   box-shadow: 0 1px 1px 0 rgba(64, 6, 75, 0.835);
   color: white;
   font-size: 16px;
   font-weight: 600;
   margin: 20px 0;
   padding: 15px 80px;
-  width: 100%;
+  position: fixed;
+  width: 360px;
 }
 
 .btn-continuar:hover {

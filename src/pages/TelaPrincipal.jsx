@@ -21,12 +21,12 @@ export default function Telaprincipal() {
       store.getContent(location.pathname.slice(1));
     }
     store.getCategories(location.pathname.slice(1));
-  }, []);
+  }, [location.pathname]);
   return (
     !store.content.length || !store.categories.length ? <Loading />
       : (
         <div className="body">
-          <Header title={location.pathname.includes('comidas') ? 'comidas' : 'bebidas'} search />
+          <Header title={location.pathname.includes('comidas') ? 'Comidas' : 'Bebidas'} search />
           <div className="container-category">
             <Categoryfilter category="All" />
             {store.categories
