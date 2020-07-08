@@ -22,7 +22,8 @@ function goToProgress(store, buttonText, location, history, type) {
   const id = store.productDetails.idDrink || store.productDetails.idMeal;
   if (buttonText === 'Iniciar Receita') {
     const key = type === 'comidas' ? 'meals' : 'cocktails';
-    localStorage.setItem('inProgressRecipes', JSON.stringify({ ...inProgress, [key]: { [id]: [] } }));
+    localStorage.setItem('inProgressRecipes',
+      JSON.stringify({ ...inProgress, [key]: { ...inProgress[key], [id]: [] } }));
   }
 
   const path = location.pathname;
@@ -32,8 +33,14 @@ function goToProgress(store, buttonText, location, history, type) {
 function makeButtonText(id, type) {
   const key = type === 'comidas' ? 'meals' : 'cocktails';
   let inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
-  if (!inProgress) return 'Iniciar Receita';
+  if (!inProgress) {
+    localStorage.setItem('inProgressRecipes', JSON.stringify({ meals: [], cocktails: [] }));
+    return 'Iniciar Receita';
+  }
+  console.log(key);
+  console.log(inProgress);
   inProgress = inProgress[key];
+  console.log(inProgress);
   return Object.keys(inProgress).includes(id) ? 'Continuar Receita' : 'Iniciar Receita';
 }
 
