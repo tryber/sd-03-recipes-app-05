@@ -6,7 +6,7 @@ import { ProducDetailsContext } from '../contexts/ProducDetailsContext';
 const _ = require('lodash');
 
 function check({
-  recipeId, index, checked, setChecked, store, keys,
+  recipeId, index, checked, setChecked, keys,
 }) {
   let recipe;
   let inProgress;
@@ -24,11 +24,13 @@ function check({
     recipe.push(index);
   }
   localStorage.setItem('inProgressRecipes', JSON.stringify({ ...inProgress, [keys]: { [recipeId]: recipe } }));
-  store.setRecipes({ ...inProgress, [recipeId]: recipe });
+  // store.setRecipes({ ...inProgress, [recipeId]: recipe });
   setChecked(!checked);
 }
 
-export default function Checkboxingredient({ index, children, recipeId }) {
+export default function Checkboxingredient({
+  index, children, recipeId, setDone,
+}) {
   const location = useLocation();
   const type = location.pathname.includes('comidas') ? 'comidas' : 'bebidas';
   const keys = type === 'comidas' ? 'meals' : 'cocktails';
@@ -41,7 +43,7 @@ export default function Checkboxingredient({ index, children, recipeId }) {
     }
   }
   const [checked, setChecked] = useState(setCheckState());
-  const store = useContext(ProducDetailsContext);
+  // const store = useContext(ProducDetailsContext);
 
   return (
     <div
@@ -50,9 +52,12 @@ export default function Checkboxingredient({ index, children, recipeId }) {
     >
       <input
         checked={checked}
-        onChange={() => check({
-          recipeId, index, checked, setChecked, store, keys,
-        })}
+        onChange={() => {
+          check({
+            recipeId, index, checked, setChecked, keys,
+          });
+          setDone();
+        }}
         type="checkbox"
         name="ingredient"
         id="ingredient"
