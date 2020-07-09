@@ -27,7 +27,7 @@ const saveEmail = (email) => localStorage.setItem('user', JSON.stringify({ email
 const renderText = (text) => {
   if (text) {
     return (
-      <p className="text-invalid">* E-mail ou senha inválido</p>
+      <p className="text-invalid">E-mail ou senha inválido</p>
     );
   }
   return false;

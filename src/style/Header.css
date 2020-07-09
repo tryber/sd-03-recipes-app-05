@@ -1,0 +1,28 @@
+.title-header {
+  align-items: center;
+  background-color: #ff7b00;
+  color: white;
+  display: flex;
+  font-size: 14px;
+  font-variant: small-caps;
+  height: 50px;
+  justify-content: space-between;
+  padding: 0 30px;
+  text-shadow: rgb(231, 120, 15) 0.1em 0.1em 0.2em;
+}
+
+.profileIcon {
+  color: white;
+  filter: invert(100%);
+  width: 25px;
+}
+
+.searchIcon {
+  filter: invert(100%);
+  width: 25px;
+}
+
+.btn-search {
+  background-color: transparent;
+  border: 0;
+}

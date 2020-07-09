@@ -1,15 +1,23 @@
 import PropTypes from 'prop-types';
 import React, { createContext, useState } from 'react';
-import { getByName, getCategoryList, filterByCategory } from '../service/mealAPI';
-import { getByName as getCocktails, getCategoryList as getDrinkCategory, filterByCategory as filterDrink } from '../service/cocktailAPI';
+import {
+  getByName, getCategoryList, filterByCategory, filterByIngredient, filterByFirstLetter,
+} from '../service/mealAPI';
+import {
+  getByName as getCocktails,
+  filterByIngredient as ingredientFetch,
+  getCategoryList as getDrinkCategory,
+  filterByCategory as filterDrink,
+  filterByFirstLetter as drinkFirstLetter,
+} from '../service/cocktailAPI';
 
 export const TelaPrincipalContext = createContext(null);
 
-async function changeContentFetch(type) {
+async function changeContentFetch(type, filter) {
   if (type === 'comidas') {
-    return (await getByName('')).slice(0, 12);
+    return (await getByName(filter || '')).slice(0, 12);
   } if (type === 'bebidas') {
-    return (await getCocktails('')).slice(0, 12);
+    return (await getCocktails(filter || '')).slice(0, 12);
   }
   return undefined;
 }
@@ -23,6 +31,15 @@ async function changeCategoryFetch(type) {
   return undefined;
 }
 
+async function changeFirstLetter(type, letter) {
+  if (type === 'comidas') {
+    return (await filterByFirstLetter(letter)).slice(0, 5);
+  } if (type === 'bebidas') {
+    return (await drinkFirstLetter(letter)).slice(0, 5);
+  }
+  return undefined;
+}
+
 async function changeFilteredFetch(filterToUse, type) {
   if (type === 'comidas') {
     return (await filterByCategory(filterToUse)).slice(0, 12);
@@ -32,28 +49,41 @@ async function changeFilteredFetch(filterToUse, type) {
   return undefined;
 }
 
+async function changeIngredientFetch(filterToUse, type) {
+  if (type === 'comidas') {
+    return (await filterByIngredient(filterToUse)).slice(0, 12);
+  } if (type === 'bebidas') {
+    return (await ingredientFetch(filterToUse)).slice(0, 12);
+  }
+  return undefined;
+}
+
 const Provider = ({ children }) => {
   const [content, setContent] = useState([]);
   const [categories, setCategories] = useState([]);
   const [filter, setFilter] = useState('All');
 
-  async function getContent(type) {
+  async function getContent(type, filterTouse) {
     setContent([]);
-    // if (type === 'comidas') {
-    //   setContent((await getByName('')).slice(0, 12));
-    // } else if (type === 'bebidas') {
-    //   setContent((await getCocktails('')).slice(0, 12));
-    // }
-    setContent(await changeContentFetch(type));
+    if (!filterTouse) {
+      setContent(await changeContentFetch(type));
+    } else {
+      setContent(await changeIngredientFetch(filterTouse, type));
+    }
+
     setFilter('All');
   }
 
+  async function getContentUsingName(type, name) {
+    setContent([]);
+    setContent(await changeContentFetch(type, name));
+  }
+
+  async function getByFisrtLetter(type, letter) {
+    setContent(await changeFirstLetter(type, letter));
+  }
+
   async function getCategories(type) {
-    // if (type === 'comidas') {
-    //   setCategories((await getCategoryList()).slice(0, 5));
-    // } else if (type === 'bebidas') {
-    //   setCategories((await getDrinkCategory()).slice(0, 5));
-    // }
     setCategories(await changeCategoryFetch(type));
   }
 
@@ -61,21 +91,19 @@ const Provider = ({ children }) => {
     setFilter(filterToUse);
     setContent([]);
     setContent(await changeFilteredFetch(filterToUse, type));
-
-    // if (type === 'comidas') {
-    //   setContent((await filterByCategory(filterToUse)).slice(0, 12));
-    // } else if (type === 'bebidas') {
-    //   setContent((await filterDrink(filterToUse)).slice(0, 12));
-    // }
   }
 
   const store = {
     content,
+    setContent,
     categories,
     filter,
     getContent,
     getCategories,
     getFilteredResults,
+    getContentUsingName,
+    setFilter,
+    getByFisrtLetter,
 
   };
 
