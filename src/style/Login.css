@@ -13,10 +13,10 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 5%;
-  min-height: 300px;
+  margin-top: 20px;
+  min-height: 520px;
   padding: 40px;
-  width: 340px;
+  width: 260px;
 }
 
 .input-login {
@@ -28,7 +28,7 @@ body {
   font-size: 14px;
   margin: 0 0 20px;
   padding: 10px 15px;
-  width: 340px;
+  width: 300px;
 }
 
 .button-login {
@@ -41,7 +41,7 @@ body {
   font-weight: 400;
   margin-top: 35px;
   padding: 12px 15px;
-  width: 340px;
+  width: 300px;
 }
 
 .button-login:hover {
@@ -57,14 +57,14 @@ body {
   font-weight: 400;
   margin-top: 35px;
   padding: 12px 15px;
-  width: 340px;
+  width: 300px;
 }
 
 .text-invalid {
-  color: rgb(15, 73, 28);
+  color: rgba(43, 9, 59, 0.76);
   font-size: 14px;
   margin-bottom: -5px;
-  margin-left: 170px;
+  margin-left: 105px;
 }
 
 .img-logo {

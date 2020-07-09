@@ -115,7 +115,7 @@ export default function Productdetails() {
   return (
     _.isEmpty(store.productDetails) ? <Loading />
       : (
-        <div className="body">
+        <div className="body-details">
           {renderImage(store)}
           <p data-testid="recipe-title" className="title-txt">
             {store.productDetails.strMeal || store.productDetails.strDrink}
