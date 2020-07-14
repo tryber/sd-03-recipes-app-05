@@ -37,10 +37,9 @@ function makeButtonText(id, type) {
     localStorage.setItem('inProgressRecipes', JSON.stringify({ meals: [], cocktails: [] }));
     return 'Iniciar Receita';
   }
-  console.log(key);
-  console.log(inProgress);
+
   inProgress = inProgress[key];
-  console.log(inProgress);
+
   return Object.keys(inProgress).includes(id) ? 'Continuar Receita' : 'Iniciar Receita';
 }
 
