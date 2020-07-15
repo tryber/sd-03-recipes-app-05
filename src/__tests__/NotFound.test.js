@@ -18,7 +18,7 @@ const renderWithRouter = (path) => {
     history,
   };
 };
-describe.skip('1-notfound', () => {
+describe('Not Found Page', () => {
   test('Expected not found to exist', async () => {
     const { findByText } = renderWithRouter('explorar/bebidas/area');
     const text = await findByText('Not Found');

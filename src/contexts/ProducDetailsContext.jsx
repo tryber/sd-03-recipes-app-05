@@ -29,7 +29,6 @@ const Provider = ({ children }) => {
   const [recipes, setRecipes] = useState([]);
 
   async function getProductDetails(type, id) {
-    console.log('getting');
     setProductDetails(await changeProductDetails(type, id));
   }
 

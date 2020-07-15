@@ -31,14 +31,14 @@ async function changeCategoryFetch(type) {
   return undefined;
 }
 
-async function changeFirstLetter(type, letter) {
-  if (type === 'comidas') {
-    return (await filterByFirstLetter(letter)).slice(0, 5);
-  } if (type === 'bebidas') {
-    return (await drinkFirstLetter(letter)).slice(0, 5);
-  }
-  return undefined;
-}
+// async function changeFirstLetter(type, letter) {
+//   if (type === 'comidas') {
+//     return (await filterByFirstLetter(letter)).slice(0, 5);
+//   } if (type === 'bebidas') {
+//     return (await drinkFirstLetter(letter)).slice(0, 5);
+//   }
+//   return undefined;
+// }
 
 async function changeFilteredFetch(filterToUse, type) {
   if (type === 'comidas') {
@@ -46,7 +46,6 @@ async function changeFilteredFetch(filterToUse, type) {
   } if (type === 'bebidas') {
     return (await filterDrink(filterToUse)).slice(0, 12);
   }
-  return undefined;
 }
 
 async function changeIngredientFetch(filterToUse, type) {
@@ -74,14 +73,14 @@ const Provider = ({ children }) => {
     setFilter('All');
   }
 
-  async function getContentUsingName(type, name) {
-    setContent([]);
-    setContent(await changeContentFetch(type, name));
-  }
+  // async function getContentUsingName(type, name) {
+  //   setContent([]);
+  //   setContent(await changeContentFetch(type, name));
+  // }
 
-  async function getByFisrtLetter(type, letter) {
-    setContent(await changeFirstLetter(type, letter));
-  }
+  // async function getByFisrtLetter(type, letter) {
+  //   setContent(await changeFirstLetter(type, letter));
+  // }
 
   async function getCategories(type) {
     setCategories(await changeCategoryFetch(type));
@@ -101,9 +100,9 @@ const Provider = ({ children }) => {
     getContent,
     getCategories,
     getFilteredResults,
-    getContentUsingName,
+    // getContentUsingName,
     setFilter,
-    getByFisrtLetter,
+    // getByFisrtLetter,
 
   };
 

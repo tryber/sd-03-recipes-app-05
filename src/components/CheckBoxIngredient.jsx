@@ -56,6 +56,7 @@ export default function Checkboxingredient({
             recipeId, index, checked, setChecked, keys,
           });
           setDone();
+          console.log(localStorage.getItem('inProgressRecipes'));
         }}
         type="checkbox"
         name="ingredient"

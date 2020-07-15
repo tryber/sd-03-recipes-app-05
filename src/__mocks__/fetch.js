@@ -58,7 +58,7 @@ const mockFetch = () => {
       if (
         url === 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=Aquamarine'
       || url === 'https://www.thecocktaildb.com/api/json/v1/1/random.php'
-      || url === 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=178319'
+      || url.includes('https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=')
       ) { return Promise.resolve(oneDrink); }
 
       if (url === 'https://www.themealdb.com/api/json/v1/1/search.php?s=soup') { return Promise.resolve(soupMeals); }

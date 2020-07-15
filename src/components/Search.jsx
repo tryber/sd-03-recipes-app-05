@@ -23,7 +23,6 @@ async function changeByFirstLetter(type, letter) {
   } if (type === 'bebidas') {
     return drinkFirstLetter(letter);
   }
-  return undefined;
 }
 
 async function changeIngredientFetch(filterToUse, type) {
@@ -32,7 +31,6 @@ async function changeIngredientFetch(filterToUse, type) {
   } if (type === 'bebidas') {
     return ingredientFetch(filterToUse);
   }
-  return undefined;
 }
 
 async function renderIfIngredient(store, search, type, history) {
