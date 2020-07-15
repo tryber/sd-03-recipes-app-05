@@ -20,17 +20,15 @@ async function getName(type, name) {
 async function changeByFirstLetter(type, letter) {
   if (type === 'comidas') {
     return filterByFirstLetter(letter);
-  } if (type === 'bebidas') {
-    return drinkFirstLetter(letter);
   }
+  return drinkFirstLetter(letter);
 }
 
 async function changeIngredientFetch(filterToUse, type) {
   if (type === 'comidas') {
     return filterByIngredient(filterToUse);
-  } if (type === 'bebidas') {
-    return ingredientFetch(filterToUse);
   }
+  return ingredientFetch(filterToUse);
 }
 
 async function renderIfIngredient(store, search, type, history) {

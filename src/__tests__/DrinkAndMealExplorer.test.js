@@ -23,6 +23,7 @@ const renderWithRouter = (path) => {
     history,
   };
 };
+
 const setUp = () => {
   fetch();
   localStorageMock();
