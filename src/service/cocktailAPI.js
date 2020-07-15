@@ -15,12 +15,12 @@ export async function getCategoryList() {
 }
 
 // Pega todos os drinks de uma categoria específica
-// export async function filterByCategory(category) {
-//   const categoryReturn = await fetch(
-//     `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`,
-//   ).then((r) => r.json());
-//   return categoryReturn.drinks;
-// }
+export async function filterByCategory(category) {
+  const categoryReturn = await fetch(
+    `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`,
+  ).then((r) => r.json());
+  return categoryReturn.drinks;
+}
 
 // Pega um drink aleatório
 export async function getRandomDrink() {
