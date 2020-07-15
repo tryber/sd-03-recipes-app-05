@@ -69,6 +69,11 @@ describe('A lista de ingredientes deve conter um checkbox para cada um dos items
 });
 
 describe('Ao clicar no checkbox de um ingrediente, o nome dele deve ser "riscado" da lista', () => {
+  const getIngredients = () => (
+    cy.get('[data-testid*="ingredient-step"]')
+      .find('input[type="checkbox"]')
+  );
+
   it('verifica se é possível marcar todos os passos da receita de comida', () => {
     cy.visit('http://localhost:3000/comidas/52771/in-progress', {
       onBeforeLoad(win) {
@@ -76,9 +81,10 @@ describe('Ao clicar no checkbox de um ingrediente, o nome dele deve ser "riscado
       },
     });
 
-    cy.get('[data-testid*="ingredient-step"]')
-      .find('input[type="checkbox"]')
-      .check()
+    getIngredients()
+      .check();
+
+    getIngredients()
       .should('have.css', 'text-decoration', 'none solid rgb(0, 0, 0)');
   });
 
@@ -89,9 +95,10 @@ describe('Ao clicar no checkbox de um ingrediente, o nome dele deve ser "riscado
       },
     });
 
-    cy.get('[data-testid*="ingredient-step"]')
-      .find('input[type="checkbox"]')
-      .check()
+    getIngredients()
+      .check();
+
+    getIngredients()
       .should('have.css', 'text-decoration', 'none solid rgb(0, 0, 0)');
   });
 });
@@ -191,13 +198,13 @@ describe('A mesma lógica de favoritar e compartilhar da tela de detalhes de uma
     cy.visit('http://localhost:3000/comidas/52771/in-progress', {
       onBeforeLoad(win) {
         const favoriteRecipes = [{
-          "id": "52771",
-          "type": "comida",
-          "area": "Italian",
-          "category": "Vegetarian",
-          "alcoholicOrNot": "",
-          "name": "Spicy Arrabiata Penne",
-          "image": "https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg",
+          id: '52771',
+          type: 'comida',
+          area: 'Italian',
+          category: 'Vegetarian',
+          alcoholicOrNot: '',
+          name: 'Spicy Arrabiata Penne',
+          image: 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
         }];
         localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
         win.fetch = fetchMock;
@@ -225,13 +232,13 @@ describe('A mesma lógica de favoritar e compartilhar da tela de detalhes de uma
     cy.visit('http://localhost:3000/bebidas/178319/in-progress', {
       onBeforeLoad(win) {
         const favoriteRecipes = [{
-          "id": "178319",
-          "type": "bebida",
-          "area": "",
-          "category": "Cocktail",
-          "alcoholicOrNot": "Alcoholic",
-          "name": "Aquamarine",
-          "image": "https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg",
+          id: '178319',
+          type: 'bebida',
+          area: '',
+          category: 'Cocktail',
+          alcoholicOrNot: 'Alcoholic',
+          name: 'Aquamarine',
+          image: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
         }];
         localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
         win.fetch = fetchMock;
@@ -277,13 +284,13 @@ describe('A mesma lógica de favoritar e compartilhar da tela de detalhes de uma
     cy.visit('http://localhost:3000/comidas/52771/in-progress', {
       onBeforeLoad(win) {
         const favoriteRecipes = [{
-          "id": "52771",
-          "type": "comida",
-          "area": "Italian",
-          "category": "Vegetarian",
-          "alcoholicOrNot": "",
-          "name": "Spicy Arrabiata Penne",
-          "image": "https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg",
+          id: '52771',
+          type: 'comida',
+          area: 'Italian',
+          category: 'Vegetarian',
+          alcoholicOrNot: '',
+          name: 'Spicy Arrabiata Penne',
+          image: 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
         }];
         localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
         win.fetch = fetchMock;
@@ -323,13 +330,13 @@ describe('A mesma lógica de favoritar e compartilhar da tela de detalhes de uma
     cy.visit('http://localhost:3000/bebidas/178319/in-progress', {
       onBeforeLoad(win) {
         const favoriteRecipes = [{
-          "id": "178319",
-          "type": "bebida",
-          "area": "",
-          "category": "Cocktail",
-          "alcoholicOrNot": "Alcoholic",
-          "name": "Aquamarine",
-          "image": "https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg",
+          id: '178319',
+          type: 'bebida',
+          area: '',
+          category: 'Cocktail',
+          alcoholicOrNot: 'Alcoholic',
+          name: 'Aquamarine',
+          image: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
         }];
         localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
         win.fetch = fetchMock;
@@ -388,7 +395,7 @@ describe('A mesma lógica de favoritar e compartilhar da tela de detalhes de uma
           type: 'bebida',
           area: '',
           category: 'Cocktail',
-          alcoholicOrNot:  'Alcoholic',
+          alcoholicOrNot: 'Alcoholic',
           name: 'Aquamarine',
           image: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
         },

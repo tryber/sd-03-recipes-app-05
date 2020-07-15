@@ -1,28 +1,29 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
-import Telaprincipal from './pages/TelaPrincipal';
-import TPProvider from './contexts/TelaPrincipalContext';
-import Login from './pages/Login';
+import { Switch } from 'react-router-dom';
 import './App.css';
+import * as rota from './Routes';
 
 function App() {
   return (
     <div>
-      <Route exact path="/">
-        <TPProvider>
-          <Login />
-        </TPProvider>
-      </Route>
-      <Route path="/comidas">
-        <TPProvider>
-          <Telaprincipal />
-        </TPProvider>
-      </Route>
-      <Route path="/bebidas">
-        <TPProvider>
-          <Telaprincipal />
-        </TPProvider>
-      </Route>
+      <Switch>
+        {rota.renderReceitasFeitas()}
+        {rota.renderComidas()}
+        {rota.renderBebibdas()}
+        {rota.renderPerfil()}
+        {rota.renderIngredientesB()}
+        {rota.renderIngredientesA()}
+        {rota.renderExplorar()}
+        {rota.renderBarra()}
+        {rota.renderAreaA()}
+        {rota.renderAreaB()}
+        {rota.renderFavoritas()}
+        {rota.renderProgressA()}
+        {rota.renderProgressB()}
+        {rota.renderComidasId()}
+        {rota.renderBebidasId()}
+        {rota.renderExplorarTipo()}
+      </Switch>
     </div>
   );
 }

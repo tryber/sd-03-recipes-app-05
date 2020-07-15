@@ -1,0 +1,76 @@
+const meals = require('./meals');
+const oneMeal = require('./oneMeal');
+const soupMeals = require('./soupMeals');
+const beefMeals = require('./beefMeals');
+const chickenMeals = require('./chickenMeals');
+const dessertMeals = require('./dessertMeals');
+const goatMeals = require('./goatMeals');
+const mealCategories = require('./mealCategories');
+const mealIngredients = require('./mealIngredients');
+const mealsByIngredient = require('./mealsByIngredient');
+const drinks = require('./drinks');
+const oneDrink = require('./oneDrink');
+const ginDrinks = require('./ginDrinks');
+const ordinaryDrinks = require('./ordinaryDrinks');
+const cocktailDrinks = require('./cocktailDrinks');
+const drinkCategories = require('./drinkCategories');
+const drinkIngredients = require('./drinkIngredients');
+const areas = require('./areas');
+
+const jsonFunc = (url) => {
+  switch (url) {
+    case 'https://www.themealdb.com/api/json/v1/1/list.php?c=list':
+      return Promise.resolve(mealCategories);
+    case 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list':
+      return Promise.resolve(drinkCategories);
+    case 'https://www.themealdb.com/api/json/v1/1/list.php?i=list':
+      return Promise.resolve(mealIngredients);
+    case 'https://www.themealdb.com/api/json/v1/1/filter.php?i=Chicken':
+      return Promise.resolve(mealsByIngredient);
+    case 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list':
+      return Promise.resolve(drinkIngredients);
+    case 'https://www.themealdb.com/api/json/v1/1/list.php?a=list':
+      return Promise.resolve(areas);
+    case 'https://www.themealdb.com/api/json/v1/1/random.php':
+      return Promise.resolve(oneMeal);
+    case 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=52771':
+      return Promise.resolve(oneMeal);
+    case 'https://www.thecocktaildb.com/api/json/v1/1/random.php':
+      return Promise.resolve(oneDrink);
+    case 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=':
+      return Promise.resolve(oneDrink);
+    case 'https://www.themealdb.com/api/json/v1/1/search.php?s=soup':
+      return Promise.resolve(soupMeals);
+    case 'https://www.themealdb.com/api/json/v1/1/filter.php?c=Beef':
+      return Promise.resolve(beefMeals);
+    case 'https://www.themealdb.com/api/json/v1/1/filter.php?c=Chicken':
+      return Promise.resolve(chickenMeals);
+    case 'https://www.themealdb.com/api/json/v1/1/filter.php?c=Dessert':
+      return Promise.resolve(dessertMeals);
+    case 'https://www.themealdb.com/api/json/v1/1/filter.php?c=Goat':
+      return Promise.resolve(goatMeals);
+    case 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=gin':
+      return Promise.resolve(ginDrinks);
+    case 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary Drink':
+      return Promise.resolve(ordinaryDrinks);
+    case 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail':
+      return Promise.resolve(cocktailDrinks);
+    case 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=':
+      return Promise.resolve(drinks);
+    case 'https://www.themealdb.com/api/json/v1/1/search.php?s=':
+      return Promise.resolve(meals);
+    default:
+      return Promise.resolve(oneDrink);
+  }
+};
+
+const mockFetch = () => {
+  const mocked = (url) => Promise.resolve({
+    status: 200,
+    ok: true,
+    json: () => jsonFunc(url),
+  });
+  global.fetch = jest.fn((url) => mocked(url));
+};
+
+module.exports = mockFetch;
