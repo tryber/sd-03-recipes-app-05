@@ -11,7 +11,6 @@ import {
 } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import fetch from '../__mocks__/fetch';
-import Productdetails from '../pages/ProductDetails';
 import App from '../App';
 
 const history = createMemoryHistory();

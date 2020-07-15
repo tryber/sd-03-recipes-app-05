@@ -7,7 +7,6 @@ import {
   act,
   screen,
   cleanup,
-  wait,
 } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import fetch from '../__mocks__/fetch';

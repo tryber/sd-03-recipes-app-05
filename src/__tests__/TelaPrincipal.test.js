@@ -3,14 +3,11 @@ import React from 'react';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import {
-  render, fireEvent, act, cleanup, screen, waitForDomChange,
+  render, fireEvent, act, cleanup, screen,
 } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import App from '../App';
-import meals from '../__mocks__/meals';
-import drinks from '../__mocks__/drinks';
 import fetch from '../__mocks__/fetch';
-import SearchBar from '../components/Search';
 
 // const mockFetch = () => {
 //   // const apiResponse = Promise.resolve({

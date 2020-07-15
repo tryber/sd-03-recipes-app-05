@@ -3,9 +3,7 @@ import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import {
   render,
-  fireEvent,
   act,
-  screen,
   cleanup,
 } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
